@@ -1,0 +1,17 @@
+.todos{
+    margin: 7px auto;
+    padding: 7px;
+    height: 50px;
+    width: 200px;
+    background-color: navajowhite;
+    border-radius: 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.todos:hover{
+    background-color: seashell;
+}
+.todos div{
+    margin: 7px;
+}
