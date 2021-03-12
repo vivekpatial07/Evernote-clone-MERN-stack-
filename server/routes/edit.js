@@ -7,7 +7,8 @@ router.route('/').put((req,res)=>{
     const task = req.body.task
     let todo = {
         task:task,
-        id:id
+        id:id,
+        isChecked:req.body.isChecked
     }
     // todo = JSON.stringify(todo) 
     console.log(todo)
