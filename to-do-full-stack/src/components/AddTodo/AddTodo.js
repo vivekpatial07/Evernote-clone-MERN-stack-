@@ -7,6 +7,7 @@ import {connect , useDispatch, useSelector} from 'react-redux'
 import {fetchData} from '../../redux/actionCreator'
 import { todoSelector } from '../../redux/selector'
 import {Input, Button} from 'semantic-ui-react'
+import EditTodo from '../EditTodo/EditTodo'
 function AddTodo() {
 	const dispatch = useDispatch()
 	const todos = useSelector(todoSelector)
@@ -47,7 +48,11 @@ function AddTodo() {
 	const showTodo = todos?.map(todo=>{
 		return <div className='todos' key={todo._id}>
 			<div>{todo.task}</div>
-			<div><DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/></div>
+			<div style={{display:'flex'}}>
+			<EditTodo/>
+			<DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/>
+			
+			</div>
 		</div>
 	})
   return (
