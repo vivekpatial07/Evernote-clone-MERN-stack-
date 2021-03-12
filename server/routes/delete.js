@@ -9,8 +9,10 @@ router.route('/').get((req,res)=>{
 router.route('/').delete((req,res)=>{
 	const id = req.body.id
 	console.log(req.body)
-	Todo.findOneAndRemove({id:id},(err)=>{
+	Todo.findOneAndRemove({id:id},(err,data)=>{
 		console.log(err)
+		console.log(data)
+		res.send(data)
 	})
 
 })

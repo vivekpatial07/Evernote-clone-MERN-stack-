@@ -9,6 +9,6 @@ const todoSchema = new mongoose.Schema({
     id: String
 })
 //model
-const ToDo = mongoose.model('ToDo', todoSchema);
+const ToDo = mongoose.model('ToDo', todoSchema,'All to-dos');
 
 module.exports= ToDo
