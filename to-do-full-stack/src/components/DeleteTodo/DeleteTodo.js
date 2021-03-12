@@ -2,6 +2,7 @@ import React from 'react'
 import './DeleteTodo.css'
 import axios from 'axios'
 import { connect } from 'react-redux'
+import {Icon} from 'semantic-ui-react'
 function DeleteTodo({id, fetchData}) {
 	const deleteHandler = async(e,id) =>{
 	console.log(id)
@@ -11,8 +12,12 @@ function DeleteTodo({id, fetchData}) {
 		fetchData()
 	}
 	return (
-		<div>
-			<button className='dltbtn' onClick={(e)=>deleteHandler(e,id)}>X</button>
+		<div style={{zIndex:'100'}}>
+			<Icon 
+				name="delete"
+				size='large'
+				className='dltbtn'
+				onClick={(e)=>deleteHandler(e,id)}/>
 		</div>
 	)
 }

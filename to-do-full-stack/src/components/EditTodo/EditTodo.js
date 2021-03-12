@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import './EditTodo.css'
 import axios from 'axios'
-import {Button, Input} from 'semantic-ui-react'
+import {Button, Input, Icon} from 'semantic-ui-react'
 function EditTodo({id,fetchData}) {
     const initialState = {
         task:'',
@@ -35,11 +35,17 @@ function EditTodo({id,fetchData}) {
     }
     return (
         <div>
-            <button onClick={showTodoHandler}>Edit</button>
+            <Icon
+            name='edit outline'
+            size='large'
+            onClick={showTodoHandler}/>
             {edit?
-            <div>
+            <div className='modal'>
+               <div style={{margin:' 10% auto',color:"white"}}>
+                   <h1>Edit</h1>
                 <Input onChange={todoChangeHandler}/>
                 <Button onClick={(e)=>editTodoHandler(e,id)}>Edit</Button>
+                </div>
                 </div>
             :null}
         </div>

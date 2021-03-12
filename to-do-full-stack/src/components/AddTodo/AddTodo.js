@@ -11,11 +11,10 @@ import EditTodo from '../EditTodo/EditTodo'
 function AddTodo() {
 	const dispatch = useDispatch()
 	const todos = useSelector(todoSelector)
-	// const reRender = useSelector(state=>state.render)
-	// const [isRender,setisRender] = useState(reRender)
 	const initialState = {
 			task:'',
-			id:''
+			id:'',
+			isChecked:false
 	}
 	const [todo, settodo] = useState(initialState)
     
@@ -28,12 +27,25 @@ function AddTodo() {
 		e.preventDefault()
 		const currTodo = {...todo}
 		currTodo.id = uuidv4()
+		console.log(currTodo)
 		axios.post('http://localhost:7777/',currTodo).then(res=>{
 				fetchtodofrombackend()
 
 		}).catch(err=>{
 				console.log(err)
 		})
+	}
+	const checkboxHandler = async(e,id) =>{
+		console.log(e.target.checked)
+		const todolists = [...todos]
+			console.log(id)
+		const updateTodo=todolists.find(todo=>{
+			return todo.id===id
+		})
+		updateTodo.isChecked = e.target.checked
+		console.log(updateTodo)
+		const res = await axios.put('http://localhost:7777/',updateTodo)
+		if(res.status===200) fetchtodofrombackend()
 	}
 	const fetchtodofrombackend = () => {
 		axios.get('http://localhost:7777/').then(res=>{
@@ -45,15 +57,25 @@ function AddTodo() {
 		useEffect(()=>{
 			fetchtodofrombackend()
 		},[])
-	const showTodo = todos?.map(todo=>{
-		return <div className='todos' key={todo._id}>
-			<div>{todo.task}</div>
-			<div style={{display:'flex'}}>
-			<EditTodo id={todo.id} fetchData={fetchtodofrombackend}/>
-			<DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/>
+		const showTodo = todos?.map(todo=>{
+			return <div className='todoContainer' key={todo._id}>
+				<div className='todos'>
+					<div	className={todo.isChecked?'strikes':null}>
+						<span className='checkbox'>
+					<input type="checkbox" onChange={(e)=>checkboxHandler(e,todo.id)} 
+						//checked={todo.isChecked}
+						/>
+						</span>
+					{todo.task}
 			
+					</div>
+				<div className='controller'>
+					<EditTodo id={todo.id} fetchData={fetchtodofrombackend}/>
+					<DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/>
+				</div>
+				</div>
+				
 			</div>
-		</div>
 	})
   return (
 		<div className='container'>
