@@ -6,6 +6,7 @@ router.route('/').delete((req,res)=>{
 	console.log(req.body)
 	Todo.findOneAndRemove({id:id},(err,data)=>{
 		console.log(err)
+		res.status(200).json('deleted')
 	})
 
 })

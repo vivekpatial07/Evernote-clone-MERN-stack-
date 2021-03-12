@@ -20,6 +20,10 @@ function EditTodo({id,fetchData}) {
         updateData.id = id
         console.log(updateData)
         const res = await axios.put('http://localhost:7777/', updateData)
+        if(res.status===200){
+            fetchData()
+
+        }
     }
     const todoChangeHandler = (e) => {
         console.log(e.target.value)

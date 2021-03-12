@@ -5,8 +5,3 @@ export const fetchData = (todos) => {
         payload:todos
     }
 }
-export const reRender = () => {
-    return {
-        type:actionTypes.RE_RENDER
-    }
-}

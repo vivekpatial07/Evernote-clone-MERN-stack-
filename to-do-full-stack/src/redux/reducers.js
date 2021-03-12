@@ -11,17 +11,7 @@ const todoReducer = (state=initialState,action) => {
                 return state
     }
 }
-const reRenderReducer = (state=false,action) =>{
-    switch(action.type){
-        case actionTypes.RE_RENDER:
-            const x= !state
-            return x
-        default:
-            return state
-    }
-}
 
 export const rootReducers = combineReducers({
     todo:todoReducer,
-    render:reRenderReducer
 })

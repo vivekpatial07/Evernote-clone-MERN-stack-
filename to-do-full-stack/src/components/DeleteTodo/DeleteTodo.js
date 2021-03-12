@@ -1,18 +1,13 @@
 import React from 'react'
 import './DeleteTodo.css'
 import axios from 'axios'
-import { connect,useDispatch } from 'react-redux'
-import {reRender} from '../../redux/actionCreator'
+import { connect } from 'react-redux'
 function DeleteTodo({id, fetchData}) {
-	// component not rerendering bcz state is not changing of parent component
-	// will do this with redux
-	const dispatch = useDispatch()
 	const deleteHandler = async(e,id) =>{
 	console.log(id)
 	const res = await axios.delete('http://localhost:7777/',{data:{id:id}})
-	// console.log(res)
+	console.log(res)
 	if(res.status===200)
-		dispatch(reRender())
 		fetchData()
 	}
 	return (
