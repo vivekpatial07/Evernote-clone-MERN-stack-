@@ -3,7 +3,7 @@
     padding: 7px;
     height: 50px;
     width: 200px;
-    background-color: navajowhite;
+    border: 1px solid black;
     border-radius: 7%;
     display: flex;
     justify-content: space-between;
@@ -14,4 +14,33 @@
 }
 .todos div{
     margin: 7px;
+}
+/* to be reviewed */
+.container{
+ margin: auto;
+ border: 2px solid black;
+ margin-top: 10px;
+ padding: 10px;
+ width: 500px;
+}
+input{
+    height: 50px;
+    border-radius: 7px;
+}
+input:hover{
+    background-color: seashell;
+}
+button{
+    height: 50px;
+    border-radius: 7%;
+    background-color: white;
+    border: 1px solid black;
+}
+button:hover{
+    background-color: seashell;
+}
+form{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

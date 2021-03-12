@@ -1,0 +1,9 @@
+.dltbtn{
+    height: 20px;
+    border-radius: 90%;
+    border: 1px solid black;
+    background-color: white;
+}
+.dltbtn:hover {
+    background-color: tomato;
+}

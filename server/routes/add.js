@@ -9,7 +9,8 @@ router.route('/').get((req,res)=>{
 router.route('/').post((req,res)=>{
 
     const todo = new Todo({
-        task: req.body.task
+        task: req.body.task,
+				id: req.body.id
     })
     todo.save()
     .then(()=> res.json('Todo Added'))

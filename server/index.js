@@ -16,12 +16,14 @@ const uri = process.env.db
 
 mongoose.connect(uri,{ useNewUrlParser:true, useCreateIndex: true, useUnifiedTopology: true})
 const connection = mongoose.connection;
-connection.once('open', ()=>{
+connection.once('open', (err)=>{
     console.log(`MongoDB connected successfully`)
 })
 
 const addRouter = require('./routes/add')
+const deleteRouter = require('./routes/delete')
 app.use('/', addRouter)
+app.use('/',deleteRouter)
 
 
 
