@@ -49,7 +49,7 @@ function AddTodo() {
 		return <div className='todos' key={todo._id}>
 			<div>{todo.task}</div>
 			<div style={{display:'flex'}}>
-			<EditTodo/>
+			<EditTodo id={todo.id} fetchData={fetchtodofrombackend}/>
 			<DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/>
 			
 			</div>
