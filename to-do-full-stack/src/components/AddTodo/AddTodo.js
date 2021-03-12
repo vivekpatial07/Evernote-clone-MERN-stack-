@@ -3,13 +3,19 @@ import DeleteTodo from '../DeleteTodo/DeleteTodo'
 import {v4 as uuidv4} from 'uuid'
 import './AddTodo.css'
 import axios from 'axios'
-import EditTodo from '../EditTodo/EditTodo'
+import {connect , useDispatch, useSelector} from 'react-redux'
+import {fetchData} from '../../redux/actionCreator'
+import { todoSelector } from '../../redux/selector'
+import {Input, Button} from 'semantic-ui-react'
 function AddTodo() {
+	const dispatch = useDispatch()
+	const todos = useSelector(todoSelector)
+	// const reRender = useSelector(state=>state.render)
+	// const [isRender,setisRender] = useState(reRender)
 	const initialState = {
 			task:'',
 			id:''
 	}
-	const [showTodo, setshowTodo] = useState([])
 	const [todo, settodo] = useState(initialState)
     
 	const chandHandler = (e)=>{
@@ -30,37 +36,29 @@ function AddTodo() {
 	}
 	const fetchtodofrombackend = () => {
 		axios.get('http://localhost:7777/').then(res=>{
-			const fetchedData = res.data.map(d=>{
-			return<div className='todos' key={d._id}>
-				<div>
-				{d.task}
-				</div>
-				<div>
-					<DeleteTodo id={d.id}/>
-				</div>
-				<div>
-					<EditTodo/>
-				</div>
-				</div>
-			})
-			setshowTodo(fetchedData)
+			dispatch(fetchData(res.data))
 		}).catch(err=>{
 				console.log(err)
 		})
 		}
 		useEffect(()=>{
 			fetchtodofrombackend()
-		}, [])
-	
+		},[])
+	const showTodo = todos?.map(todo=>{
+		return <div className='todos' key={todo._id}>
+			<div>{todo.task}</div>
+			<div><DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/></div>
+		</div>
+	})
   return (
 		<div className='container'>
 			<form onSubmit={addToDb}>
-			<input type='text' onChange={chandHandler}/>
-			<button>ADD TODO</button>
+			<Input type='text' onChange={chandHandler}/>
+			<Button secondary>ADD TODO</Button>
 			</form>
 			<div>{showTodo}</div>
 		</div>
   )
 }
 
-export default AddTodo
+export default connect()(AddTodo)
