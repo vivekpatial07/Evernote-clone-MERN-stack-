@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './DeleteTodo.css'
 import axios from 'axios'
 import { connect,useDispatch } from 'react-redux'
