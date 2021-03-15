@@ -4,10 +4,11 @@ import {v4 as uuidv4} from 'uuid'
 import './AddTodo.css'
 import axios from 'axios'
 import {connect , useDispatch, useSelector} from 'react-redux'
-import {fetchData} from '../../redux/actionCreator'
-import { todoSelector } from '../../redux/selector'
+import {fetchData} from '../../../redux/actionCreator'
+import { todoSelector } from '../../../redux/selector'
 import {Input, Button} from 'semantic-ui-react'
 import EditTodo from '../EditTodo/EditTodo'
+import { motion, AnimatePresence} from "framer-motion";
 function AddTodo() {
 	const dispatch = useDispatch()
 	const todos = useSelector(todoSelector)
@@ -60,10 +61,10 @@ function AddTodo() {
 		const showTodo = todos?.map(todo=>{
 			return <div className='todoContainer' key={todo._id}>
 				<div className='todos'>
-					<div	className={todo.isChecked?'strikes':null}>
+					<div className={todo.isChecked?'strikes':null}>
 						<span className='checkbox'>
 					<input type="checkbox" onChange={(e)=>checkboxHandler(e,todo.id)} 
-						//checked={todo.isChecked}
+						checked={todo.isChecked}
 						/>
 						</span>
 					{todo.task}
@@ -78,13 +79,24 @@ function AddTodo() {
 			</div>
 	})
   return (
-		<div className='container'>
+	//component is not unmouting
+	<AnimatePresence>
+		<motion.div 
+			animate={{scale:1}}
+			initial={{scale:0}}
+			transition={{duration:0.7}}
+			exit={{scale:0}}
+			className='container'>
 			<form onSubmit={addToDb}>
 			<Input type='text' onChange={chandHandler}/>
+			<motion.div
+			whileHover={{scale:1.09}}>	
 			<Button secondary>ADD TODO</Button>
+			</motion.div>
 			</form>
 			<div>{showTodo}</div>
-		</div>
+		</motion.div>
+	</AnimatePresence>
   )
 }
 

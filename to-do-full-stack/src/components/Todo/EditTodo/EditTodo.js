@@ -2,6 +2,7 @@ import React,{useState} from 'react'
 import './EditTodo.css'
 import axios from 'axios'
 import {Button, Input, Icon} from 'semantic-ui-react'
+import { motion } from 'framer-motion'
 function EditTodo({id,fetchData}) {
     const initialState = {
         task:'',
@@ -35,10 +36,15 @@ function EditTodo({id,fetchData}) {
     }
     return (
         <div>
+            <motion.div
+                whileHover={{scale:1.2}}
+            >
+
             <Icon
             name='edit outline'
             size='large'
             onClick={showTodoHandler}/>
+            </motion.div>
             {edit?
             <div className='modal'>
                <div style={{margin:' 10% auto',color:"white"}}>
