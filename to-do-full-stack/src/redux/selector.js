@@ -3,3 +3,7 @@ export const todoSelector = createSelector(
     state=>state.todo[0],
     todo=>todo
 )
+export const noteSelector = createSelector(
+    state=>state.note,
+    note=>note
+)

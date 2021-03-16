@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 //schema
 const todoSchema = new mongoose.Schema({
-    task: String,
+    task: {type:String, required:true},
     id: String,
     isChecked:Boolean
 })

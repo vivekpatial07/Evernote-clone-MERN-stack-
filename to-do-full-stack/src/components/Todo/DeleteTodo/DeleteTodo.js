@@ -7,7 +7,7 @@ import { motion} from "framer-motion";
 function DeleteTodo({id, fetchData}) {
 	const deleteHandler = async(e,id) =>{
 	console.log(id)
-	const res = await axios.delete('http://localhost:7777/',{data:{id:id}})
+	const res = await axios.delete('http://localhost:7777/todo',{data:{id:id}})
 	console.log(res)
 	if(res.status===200)
 		fetchData()

@@ -8,7 +8,7 @@ import {fetchData} from '../../../redux/actionCreator'
 import { todoSelector } from '../../../redux/selector'
 import {Input, Button} from 'semantic-ui-react'
 import EditTodo from '../EditTodo/EditTodo'
-import { motion, AnimatePresence} from "framer-motion";
+import { motion, AnimatePresence, AnimateSharedLayout} from "framer-motion";
 function AddTodo() {
 	const dispatch = useDispatch()
 	const todos = useSelector(todoSelector)
@@ -29,7 +29,7 @@ function AddTodo() {
 		const currTodo = {...todo}
 		currTodo.id = uuidv4()
 		console.log(currTodo)
-		axios.post('http://localhost:7777/',currTodo).then(res=>{
+		axios.post('http://localhost:7777/todo',currTodo).then(res=>{
 				fetchtodofrombackend()
 
 		}).catch(err=>{
@@ -45,11 +45,11 @@ function AddTodo() {
 		})
 		updateTodo.isChecked = e.target.checked
 		console.log(updateTodo)
-		const res = await axios.put('http://localhost:7777/',updateTodo)
+		const res = await axios.put('http://localhost:7777/todo',updateTodo)
 		if(res.status===200) fetchtodofrombackend()
 	}
 	const fetchtodofrombackend = () => {
-		axios.get('http://localhost:7777/').then(res=>{
+		axios.get('http://localhost:7777/todo').then(res=>{
 			dispatch(fetchData(res.data))
 		}).catch(err=>{
 				console.log(err)
@@ -80,6 +80,7 @@ function AddTodo() {
 	})
   return (
 	//component is not unmouting
+	<AnimateSharedLayout>
 	<AnimatePresence>
 		<motion.div 
 			animate={{scale:1}}
@@ -97,6 +98,7 @@ function AddTodo() {
 			<div>{showTodo}</div>
 		</motion.div>
 	</AnimatePresence>
+	</AnimateSharedLayout>
   )
 }
 

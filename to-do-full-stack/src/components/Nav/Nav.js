@@ -3,9 +3,8 @@ import { withRouter } from 'react-router'
 import {Menu} from 'semantic-ui-react'
 
 function Nav(props) {
-    console.log(props.location.pathname)
     return (
-        <div>
+        <div style={{zIndex:'200',}}>
             <Menu>
        <Menu.Item
           name='Todo'

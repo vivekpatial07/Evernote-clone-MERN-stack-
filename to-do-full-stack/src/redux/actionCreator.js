@@ -5,3 +5,9 @@ export const fetchData = (todos) => {
         payload:todos
     }
 }
+export const showModal = (data) => {
+    return {
+        type:actionTypes.SHOW_MODAL,
+        payload:data
+    }
+}

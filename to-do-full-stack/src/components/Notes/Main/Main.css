@@ -1,0 +1,12 @@
+.note{
+    height:270px;
+    width: 270px;
+    border: 1px solid black;
+    margin: 5px;
+}
+.notes{
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+}

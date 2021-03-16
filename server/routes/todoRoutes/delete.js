@@ -1,7 +1,7 @@
 const router = require('express').Router();
-let Todo = require('../schemas/tasks')
+let Todo = require('../../models/todoModel/tasks')
 
-router.route('/').delete((req,res)=>{
+router.route('/todo').delete((req,res)=>{
 	const id = req.body.id
 	console.log(req.body)
 	Todo.findOneAndRemove({id:id},(err,data)=>{

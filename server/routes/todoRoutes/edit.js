@@ -1,7 +1,7 @@
 const router = require('express').Router();
-let Todo = require('../schemas/tasks')
+let Todo = require('../../models/todoModel/tasks')
 
-router.route('/').put((req,res)=>{
+router.route('/todo').put((req,res)=>{
     console.log(req.body)
     const id = req.body.id
     const task = req.body.task
@@ -10,7 +10,6 @@ router.route('/').put((req,res)=>{
         id:id,
         isChecked:req.body.isChecked
     }
-    // todo = JSON.stringify(todo) 
     console.log(todo)
     Todo.findOneAndUpdate({id:id},todo,null,(err,data)=>{
         res.status(200).json('updated')

@@ -1,12 +1,13 @@
 const router = require('express').Router();
-let Todo = require('../schemas/tasks')
+let Todo = require('../../models/todoModel/tasks')
 
-router.route('/').get((req,res)=>{
+router.route('/todo').get((req,res)=>{
     Todo.find()
     .then(users => res.json(users))
-    .catch(err=>res.status(400).json("Error" + err))
-});
-router.route('/').post((req,res)=>{
+    .catch(err=>{
+        console.log(`erororor`)
+        return res.status(400).json("Error" + err)})
+}).post((req,res)=>{
 
     const todo = new Todo({
         task: req.body.task,
