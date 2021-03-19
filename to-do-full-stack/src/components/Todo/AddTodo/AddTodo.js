@@ -58,34 +58,43 @@ function AddTodo() {
 		useEffect(()=>{
 			fetchtodofrombackend()
 		},[])
+
 		const showTodo = todos?.map(todo=>{
-			return <div className='todoContainer' key={todo._id}>
-				<div className='todos'>
-					<div className={todo.isChecked?'strikes':null}>
-						<span className='checkbox'>
-					<input type="checkbox" onChange={(e)=>checkboxHandler(e,todo.id)} 
-						checked={todo.isChecked}
-						/>
-						</span>
-					{todo.task}
-			
-					</div>
-				<div className='controller'>
-					<EditTodo id={todo.id} fetchData={fetchtodofrombackend}/>
-					<DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/>
-				</div>
-				</div>
+			return( 
+				<motion.div
+					className='todoContainer'
+					key={todo._id}
+					animate={{x:0}}
+					initial={{x:-777}}
+					exit={{x:-777}}
+					transition={{duration:0.7}}
+				>
+					<div className='todos'>
+						<div className={todo.isChecked?'strikes':null}>
+							<span className='checkbox'>
+						<input type="checkbox" onChange={(e)=>checkboxHandler(e,todo.id)} 
+							checked={todo.isChecked}
+							/>
+							</span>
+						{todo.task}
 				
-			</div>
+						</div>
+						<div className='controller'>
+							<EditTodo id={todo.id} fetchData={fetchtodofrombackend}/>
+							<DeleteTodo id={todo.id} fetchData={fetchtodofrombackend}/>
+						</div>
+					</div>
+						
+				</motion.div>
+			)
 	})
   return (
-	//component is not unmouting
 	<AnimateSharedLayout>
-	<AnimatePresence>
+		<AnimatePresence>
 		<motion.div 
 			animate={{scale:1}}
 			initial={{scale:0}}
-			transition={{duration:0.7}}
+			transition={{duration:0.27}}
 			exit={{scale:0}}
 			className='container'>
 			<form onSubmit={addToDb}>
@@ -95,7 +104,15 @@ function AddTodo() {
 			<Button secondary>ADD TODO</Button>
 			</motion.div>
 			</form>
-			<div>{showTodo}</div>
+			<motion.div
+				animate={{x:0}}
+				initial={{x:-777}}
+				transition={{duration:0.7}}
+			>
+				<AnimatePresence>
+					{showTodo}
+				</AnimatePresence>
+			</motion.div>
 		</motion.div>
 	</AnimatePresence>
 	</AnimateSharedLayout>

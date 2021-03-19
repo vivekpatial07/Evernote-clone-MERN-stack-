@@ -1,9 +1,10 @@
 import React,{useState,useEffect} from 'react'
 import SideNav from '../SideNav/SideNav'
 import './Main.css'
-import {useDispatch, useSelector} from 'react-redux'
+import {useSelector} from 'react-redux'
 import { noteSelector } from '../../../redux/selector'
 import axios from 'axios'
+import NotesContainer from './NotesContainer/NotesContainer'
 function Main() {
     const state = useSelector(noteSelector)
     // const dispatch = useDispatch()
@@ -12,6 +13,7 @@ function Main() {
         noteType:'normal'
     }
     const [note,setnote] = useState(initialState)
+    const [allNotes,setAllNotes] = useState([])
     const changeHandler = (e) => {
         const currentNote = {...note};
         currentNote.mainNote = e.target.value
@@ -27,6 +29,8 @@ function Main() {
         const res = await axios.get('http://localhost:7777/task')
         console.log(res)
         console.log(res.data)
+        // setnote
+        setAllNotes(res.data)
     }
     useEffect(()=>{
         // will use redux saga after this
@@ -34,17 +38,19 @@ function Main() {
     },[])
     return (
         <div>
-            <h1>NeverNote</h1>
-            <div style={{left:'0' ,position:'absolute',top:'42px'}}>
-                <SideNav/>
-            </div>
-            {state.showModal&&
+            <div style={{display:"flex", flexDirection:'row',height:"100vh"}}>
                 <div>
+                <SideNav/>
+                </div>
+                {state.showModal&&
+                    <div>
                     {/* <AddNoteModal /> */}
-                <input type='text' onChange={changeHandler}/>
-                <button onClick={addnotes}>Add</button>
+                    <input type='text' onChange={changeHandler}/>
+                    <button onClick={addnotes}>Add</button>
                 </div>
                 }
+            <NotesContainer notes={allNotes}/>
+            </div>
         </div>
     )
 }

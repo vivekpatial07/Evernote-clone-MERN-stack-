@@ -3,6 +3,7 @@ var cors = require('cors')
 const app = express()
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+//need to update express to remove body parser
 const bodyParser = require('body-parser');
 app.use(cors())
 
