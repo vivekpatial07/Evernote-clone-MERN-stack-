@@ -24,6 +24,15 @@ function Nav(props) {
         >
 
         </Menu.Item>
+        {/* <Menu.Item
+          name='Login'
+          active={props.location.pathname.includes('login')}
+          onClick={()=>{
+            props.history.push('/login')
+        }}
+        >
+
+        </Menu.Item> */}
         
         
         </Menu>  
