@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 //schema
 
-const SignupSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     username:{
         type:String,
         required:true
@@ -22,5 +22,6 @@ const SignupSchema = new mongoose.Schema({
         default: Date.now()
       }
 })  
-const User= mongoose.model("user", SignupSchema);
+const User= mongoose.model("user", UserSchema);
+
 module.exports = User 
