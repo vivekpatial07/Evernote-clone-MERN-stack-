@@ -1,0 +1,28 @@
+.pad{
+    height: 270px;
+    box-shadow: 1px 1px 1px 1px #ccc;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    overflow-x: auto;
+    border-radius: 7px;
+    background: #fff4ba;
+    border-color: #ffeb82;
+    margin-top: 61px;
+}
+textarea{
+    border-color: #ffeb82;
+    height: 200px;
+    border:none;
+    background: #fff4ba;
+    resize: none;
+    width: 100% !important;
+    padding: 0 20px;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    color: gray;
+}
+textarea:focus{
+    outline: none;
+}

@@ -57,7 +57,7 @@ function AddTodo() {
 		}
 		useEffect(()=>{
 			fetchtodofrombackend()
-		},[])
+		})
 
 		const showTodo = todos?.map(todo=>{
 			return( 
@@ -65,9 +65,11 @@ function AddTodo() {
 					className='todoContainer'
 					key={todo._id}
 					animate={{x:0}}
-					initial={{x:-777}}
+					initial={{x:null}}
 					exit={{x:-777}}
-					transition={{duration:0.7}}
+					transition={{duration:0.27}}
+					whileHover={{scale:1.1}}
+					
 				>
 					<div className='todos'>
 						<div className={todo.isChecked?'strikes':null}>

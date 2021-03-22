@@ -28,10 +28,14 @@ const updateTodoRouter = require('./routes/todoRoutes/edit')
 app.use('/',deleteTodoRouter)
 app.use('/',updateTodoRouter)
 app.use('/', addTodoRouter)
+
 const addNoteRouter = require('./routes/noteRoutes/addnote')
 app.use('/',addNoteRouter)
 
-
+const signupRouter = require('./routes/authRoutes/signUp')
+const loginRouter = require('./routes/authRoutes/login')
+app.use('/',signupRouter)
+app.use('/',loginRouter)
 
 app.listen(port,()=>{
     console.log(`server running on ${port}`)

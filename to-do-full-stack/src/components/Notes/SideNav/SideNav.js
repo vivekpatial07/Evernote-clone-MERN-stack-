@@ -2,6 +2,7 @@ import React from 'react'
 import './SideNav.css'
 import {useDispatch} from 'react-redux'
 import {showModal} from '../../../redux/actionCreator'
+import { Button } from 'semantic-ui-react'
 function SideNav() {
     const dispatch = useDispatch()
     const showNoteModal = () => {
@@ -12,7 +13,7 @@ function SideNav() {
             <p style={{fontSize:'27px'}}>
             NeverNote
             </p>
-            <button onClick={showNoteModal}>Add Note</button>
+            <Button primary onClick={showNoteModal}>Add Note</Button>
         </div>
     )
 }

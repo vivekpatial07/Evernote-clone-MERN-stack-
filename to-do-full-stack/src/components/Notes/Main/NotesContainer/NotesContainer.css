@@ -1,26 +1,41 @@
 .notes-container{
-    height: 277px;
-    box-shadow: 9px 7px 7px 7px #ccc;
-    width: 70vw;
+    height: 340px;
+    box-shadow: 2px 2px 2px 2px #ccc;
+    width: 72vw;
     display: flex;
-    margin: 0px 100px;
-    /* overflow: hidden; */
     overflow-x: auto;
+    border-radius: 7px;
 }
-/* .notes-container:hover{
-} */
+
+.notes-container::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
 .single-note{
     height: 250px;
     padding: 10px;
     margin: auto 10px;
-    border: 1px solid gray;
+    box-shadow: 0px 0px 1px 1px #696969;
+    border-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
     min-width: 300px;
+    transition: transform .2s;
 }
+.single-note:hover{
+    transform: scale(1.1); 
+}
+
 .container-right{
     display:flex;
     flex-direction:column;
     align-items:flex-start;
+    margin: auto auto;
 }
 .notes-heading{
     height: 140px;
+    font-size: 24px;
+    font-weight: 700;
 }
