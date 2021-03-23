@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcryptjs')
 
 
 //schema
@@ -22,6 +22,9 @@ const UserSchema = new mongoose.Schema({
         default: Date.now()
       }
 })  
-const User= mongoose.model("user", UserSchema);
+UserSchema.methods.matchPassword =  function (enteredPassword) {
+  return  bcrypt.compare(enteredPassword, this.password)
+}
+const User= mongoose.model("user", UserSchema, "users");
 
 module.exports = User 

@@ -34,8 +34,10 @@ app.use('/',addNoteRouter)
 
 const signupRouter = require('./routes/authRoutes/signUp')
 const loginRouter = require('./routes/authRoutes/login')
+const authRouter = require('./routes/authRoutes/userRoutes')
 app.use('/',signupRouter)
 app.use('/',loginRouter)
+app.use('/',authRouter)
 
 app.listen(port,()=>{
     console.log(`server running on ${port}`)
