@@ -1,0 +1,15 @@
+.notes-modal{
+    width:100vw;
+}
+
+.ql-editor{
+    min-height: 700px ;
+    overflow: auto;
+    padding: 27px !important;
+  }
+.ql-editor h1 {
+    margin: 0 0 27px 0 !important;
+}
+.ql-toolbar{
+    display: flex;
+}

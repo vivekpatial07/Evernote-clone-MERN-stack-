@@ -5,6 +5,7 @@ import {useSelector} from 'react-redux'
 import { noteSelector } from '../../../redux/selector'
 import axios from 'axios'
 import NotesContainer from './NotesContainer/NotesContainer'
+import AddNoteModal from '../AddNoteModal/AddNoteModal'
 function Main() {
     const state = useSelector(noteSelector)
     // const dispatch = useDispatch()

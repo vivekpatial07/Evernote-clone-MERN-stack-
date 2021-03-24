@@ -3,10 +3,12 @@ import './SideNav.css'
 import {useDispatch} from 'react-redux'
 import {showModal} from '../../../redux/actionCreator'
 import { Button } from 'semantic-ui-react'
-function SideNav() {
+import {withRouter} from 'react-router-dom'
+function SideNav(props) {
     const dispatch = useDispatch()
     const showNoteModal = () => {
         dispatch(showModal(true))
+        // props.history.push('/task/fasjjf')
     }
     return (
         <div className='sideNav'>
@@ -17,4 +19,4 @@ function SideNav() {
         </div>
     )
 }
-export default SideNav
+export default withRouter(SideNav)

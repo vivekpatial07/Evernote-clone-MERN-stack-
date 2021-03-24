@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import 'semantic-ui-css/semantic.min.css'
 import {Provider} from "react-redux";
 import {BrowserRouter} from 'react-router-dom'
+import 'react-quill/dist/quill.snow.css'; // ES6
+
 
 import store from './redux/store'
 ReactDOM.render(
