@@ -5,11 +5,35 @@
 .ql-editor{
     min-height: 700px ;
     overflow: auto;
-    padding: 27px !important;
+    /* padding: 27px auto !important; */
   }
 .ql-editor h1 {
     margin: 0 0 27px 0 !important;
 }
 .ql-toolbar{
     display: flex;
+}
+
+.header-input{
+    border-color: #ffeb82;
+    height: 61px;
+    font-size: 40px;
+    vertical-align: middle;
+    border:none;
+    resize: none;
+    width: 100% !important;
+    padding: 0 20px;
+    font-weight:100;
+    color: gray;
+    line-height: 61px;
+}
+.header-input:focus{
+    outline: none;
+}
+.header-input::placeholder{
+    font-weight: 100;
+    color: #D3D3D3;
+    vertical-align: middle;
+
+
 }

@@ -11,7 +11,7 @@
     border-color: #ffeb82;
     margin-top: 61px;
 }
-textarea{
+.scratchpad{
     border-color: #ffeb82;
     height: 200px;
     border:none;
@@ -23,6 +23,6 @@ textarea{
     font-weight: 400 !important;
     color: gray;
 }
-textarea:focus{
+.scratchpad:focus{
     outline: none;
 }

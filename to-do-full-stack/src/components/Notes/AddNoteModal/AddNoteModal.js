@@ -49,7 +49,8 @@ function AddNoteModal(props) {
     return (
         <div className="notes-modal">
             {/* For Heading */}
-            {/* <textarea>{}</textarea> */}
+            <textarea className="header-input" placeholder="Title"/>
+            <hr/>
             <ReactQuill 
                 value={text.mainNote || ""}
                 onChange={changeHandler}   

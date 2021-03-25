@@ -9,7 +9,7 @@ function ScratchPad() {
         <div>
           <div className="pad"> 
             <h3 style={{padding:"20px"}}>Scratch Pad</h3> 
-            <textarea onChange={changeHandler}>
+            <textarea onChange={changeHandler} className="scratchpad">
                 {data}
             </textarea>  
           </div>  
