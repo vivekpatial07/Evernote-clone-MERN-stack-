@@ -15,4 +15,19 @@ router.route('/task').get((req,res)=>{
     .then(()=>res.json("note added"))
     .catch(err=>res.status(400).json('error'))
 })
+
+
+
+router.route('/task/:id').get((req,res)=>{
+    const id = req.params.id
+    console.log(id)
+    Note.findById(id,(err,note)=>{
+        res.json(note)
+    })
+})
+
+
+
+
+
 module.exports = router

@@ -2,7 +2,13 @@ import React from 'react'
 import './NotesContainer.css'
 import { AnimatePresence, motion } from "framer-motion";
 import ScratchPad from '../../ScratchPad/ScratchPad';
-function NotesContainer({notes}) {
+import { withRouter } from 'react-router';
+function NotesContainer({notes, history}) {
+    const noteClicked = (e,id) =>{
+        console.log(id)
+        history.push(`task/${id}`)
+
+    }
     const data = notes.map(note=>{
         return <motion.div 
                 initial={{scale:0}}
@@ -11,6 +17,7 @@ function NotesContainer({notes}) {
                 whileHover={{scale:1.06}}
                 key={note.id}
                 className="single-note"
+                onClick={(e)=>noteClicked(e,note._id)}
                 >
                     {note.mainNote}
                 </motion.div>
@@ -33,4 +40,4 @@ function NotesContainer({notes}) {
     )
 }
 
-export default NotesContainer
+export default withRouter(NotesContainer)

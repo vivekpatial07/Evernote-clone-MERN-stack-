@@ -4,6 +4,8 @@ import './App.css'
 import Main from './components/Notes/Main/Main'
 import Nav from './components/Nav/Nav'
 import {Route,Redirect, Switch} from 'react-router-dom'
+import SideNav from './components/Notes/SideNav/SideNav'
+import AddNoteModal from './components/Notes/AddNoteModal/AddNoteModal'
 // font style to be changed
 function App() {
   return (
@@ -20,7 +22,7 @@ function App() {
             {/* <Login/> */}
           {/* </Route> */}
         </Switch>
-        <Redirect to='todo'/>
+        {/* <Redirect to='todo'/> */}
     </div>
   );
 }
