@@ -41,8 +41,6 @@ function Main(props) {
         // will use redux saga after this
         fetchFromDb()
     },[])
-    console.log(props.location.pathname)
-    console.log(props.location.pathname.includes('task/'))
     return (
         <div>
             <div style={{display:"flex", flexDirection:'row',height:"100vh"}}>

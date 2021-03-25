@@ -5,6 +5,7 @@ import {showModal} from '../../../redux/actionCreator'
 import { Button } from 'semantic-ui-react'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
+import {Icon} from 'semantic-ui-react'
 function SideNav(props) {
     const [notes,setnotes] = useState()
     const dispatch = useDispatch()
@@ -44,13 +45,12 @@ function SideNav(props) {
             }}
            >{notes?.map(note=>{
                 return(  
-                <div style={{
-                    height:"27px",
-                    margin:"7px",
-                    border:'1px solid white',
-                    width:"70%",
-                    borderRadius:"10px"
-                }}>
+                    <div 
+                    className="sidenotes"
+                    
+                    onClick={()=>{props.history.push(`/task/${note._id}`)}}
+                    >
+                    <Icon name="pencil alternate" />
                     {note.mainNote}
                 </div>
                 )

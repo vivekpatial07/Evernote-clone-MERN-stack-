@@ -5,7 +5,6 @@ import ScratchPad from '../../ScratchPad/ScratchPad';
 import { withRouter } from 'react-router';
 function NotesContainer({notes, history}) {
     const noteClicked = (e,id) =>{
-        console.log(id)
         history.push(`task/${id}`)
 
     }

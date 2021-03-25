@@ -7,3 +7,27 @@
     flex-direction: column;
     align-items: center;
 }
+
+
+
+
+.sidenotes{
+    height: 40px;
+    margin: 7px;
+    width: 100%;
+    text-align: start;
+    padding: 10px 20px;
+}
+
+
+.sidenotes:hover{
+        background-color: blue;
+        cursor: pointer;
+}
+/* style={{
+    //     height:"27px",
+    //     margin:"7px",
+    //     border:'1px solid white',
+    //     width:"70%",
+    //     borderRadius:"10px"
+    // }} */
