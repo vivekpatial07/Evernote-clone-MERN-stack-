@@ -11,14 +11,8 @@ router.route('/task').get((req,res)=>{
 
 
 
-router.route('/task/:id').get((req,res)=>{
-    const id = req.params.id
-    Note.findById(id,(err,note)=>{
-        res.json(note)
-    })
-})
 
-router.route('/task/:id').put((req,res)=>{
+router.put('/task/:id',((req,res)=>{
     // console.log(req.body)
     const note = {
         mainNote:req.body.mainNote,
@@ -30,5 +24,13 @@ router.route('/task/:id').put((req,res)=>{
         res.status(200).json(data)
         // console.log(data)
     })
+}))
+
+router.route('/task/:id').get((req,res)=>{
+    const id = req.params.id
+    Note.findById(id,(err,note)=>{
+        res.json(note)
+    })
 })
+
 module.exports = router

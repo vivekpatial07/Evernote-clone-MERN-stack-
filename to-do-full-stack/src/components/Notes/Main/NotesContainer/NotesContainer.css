@@ -40,3 +40,17 @@
     font-size: 24px;
     font-weight: 700;
 }
+
+.text-area .ql-editor{
+        min-height: 227px ;
+}
+
+/*  
+    can be used to hide the toolbar with normal theme
+    right now using core theme with no toolbar for that
+*/
+/* .containerQuill .ql-toolbar {
+    opacity: 0;
+    height: 0;
+    width: 0;
+} */

@@ -34,17 +34,7 @@ function SideNav(props) {
             NeverNote
             </p>
             <Button primary onClick={showNoteModal}>Add Note</Button>
-           <div
-            style={{
-                height:"500px",
-                width:'100%',
-                overflow:"auto",
-                margin:"10px auto",
-                display:"flex",
-                flexDirection:'column',
-                alignItems:"center"
-            }}
-           >{notes?.map(note=>{
+           <div className="sidenote-container">{notes?.map(note=>{
                 return(  
                     <div 
                     className={props.location.pathname.includes(note._id)
@@ -54,7 +44,9 @@ function SideNav(props) {
                     onClick={()=>{props.history.push(`/task/${note._id}`)}}
                     >
                     <Icon name="pencil alternate" />
-                    {note.mainNote}
+                    <span style={{marginLeft:"14px"}}>
+                    {note.title}
+                    </span>
                 </div>
                 )
             })}

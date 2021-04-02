@@ -28,6 +28,18 @@
 .activenote {
     background-color: grey;
 }
+
+
+
+.sidenote-container{
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 /* style={{
     //     height:"27px",
     //     margin:"7px",

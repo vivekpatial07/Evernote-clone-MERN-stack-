@@ -11,3 +11,9 @@ export const showModal = (data) => {
         payload:data
     }
 }
+export const storeNotes = (data) => {
+    return {
+        type:actionTypes.STORE_NOTES,
+        payload:data
+    }
+}

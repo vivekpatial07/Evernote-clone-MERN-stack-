@@ -3,6 +3,8 @@ import './NotesContainer.css'
 import { AnimatePresence, motion } from "framer-motion";
 import ScratchPad from '../../ScratchPad/ScratchPad';
 import { withRouter } from 'react-router';
+import { removeHTMLTags } from '../../helpers/helpers';
+import ReactQuill from 'react-quill'
 function NotesContainer({notes, history}) {
     const noteClicked = (e,id) =>{
         history.push(`task/${id}`)
@@ -18,7 +20,21 @@ function NotesContainer({notes, history}) {
                 className="single-note"
                 onClick={(e)=>noteClicked(e,note._id)}
                 >
-                    {note.mainNote}
+                 <h2>
+                 {note.title}
+                 </h2>
+                 {/*
+                  blur() method from react quill documentation  
+                  to be used
+                  */}
+                 <div className="containerQuill">
+                     <ReactQuill 
+                        theme={null}
+                        value={note.mainNote}
+                 >
+                     <div className="text-area"></div>
+                 </ReactQuill>
+                   </div>
                 </motion.div>
     })
     return (

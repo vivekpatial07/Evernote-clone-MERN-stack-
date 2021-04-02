@@ -6,7 +6,7 @@ const  mongoose = require('mongoose')
 
 const noteSchema = new mongoose.Schema({
     mainNote:{type:String,required:true},
-    title: String,
+    title: {type:String,required:true},
     noteType:String
 })
 

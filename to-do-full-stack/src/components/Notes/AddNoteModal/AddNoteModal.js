@@ -1,26 +1,50 @@
-import React,{ useEffect, useState } from 'react'
+import React,{ useEffect, useState, useCallback} from 'react'
 import ReactQuill from "react-quill";
 import './AddNoteModal.css'
-import {removeHTMLTags} from '../helpers/helpers'
 import axios from 'axios'
 import { withRouter } from 'react-router';
 import {debounce} from "lodash";
+import ReactLoader from '../../Loader/ReactLoader';
 function AddNoteModal(props) {
     const initalNote = {
         mainNote: undefined,
-        noteType: "normal"
+        title: undefined,
+        noteType: "normal",
+    }
+    const[isloading,setisloading] = useState(true)
+    const dbcall = (note,id) =>{
+        // console.log(note,id)
+        axios.put(`http://localhost:7777/task/${id}`,note).then((res)=>{
+                   console.log(res)
+                }).catch((err)=>{
+                       console.log(err)
+                })
     }
     const [text,settext] = useState(initalNote)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const dbSave = useCallback(
+        debounce((note,id) => dbcall(note,id), 2700)
+		, []
+	)
     const changeHandler = (e) => {
-        const x = removeHTMLTags(e)
+        // const x = removeHTMLTags(e)
         const note = {...text}
-        note.mainNote = x
+        note.mainNote = e
         const id = props.location.pathname.split('/')[2]
-        axios.put(`http://localhost:7777/task/${id}`,note).then((res)=>{
-            console.log(res)
-        }).catch((err)=>{
-            console.log(err)
-        })
+        
+        //giving bugs here
+        //needs to be changed
+        //(maybe to useeffect)
+        // maybe use redux store for all operations
+        dbSave(note,id)
+        // debounce(dbcall,1000)
+        // if(note.title){
+                // axios.put(`http://localhost:7777/task/${id}`,note).then((res)=>{
+                //    console.log(res)
+                // }).catch((err)=>{
+                //        console.log(err)
+                // })
+            // } 
     }
 
 
@@ -31,12 +55,12 @@ function AddNoteModal(props) {
         console.log(id)
         settext(note)
         console.log(note)
+        dbSave(note,id)
         axios.put(`http://localhost:7777/task/${id}`,note).then((res)=>{
             console.log(res)
         }).catch((err)=>{
             console.log(err)
         })
-
     }
     const fetchValue = () => {
     axios.get(`http://localhost:7777${props.location.pathname}`).then(res=>{
@@ -45,31 +69,50 @@ function AddNoteModal(props) {
     }).then((blah)=>{
             console.log(blah)
             const note = {...text};
-            note.mainNote = blah.mainNote
-            note.title = blah.title
-            settext(note)
+            if(blah){
+                note.mainNote = blah.mainNote
+                note.title = blah.title
+                settext(note)
+                setisloading(false)
+                return
+            }
+            settext(initalNote)
+            // setisloading(true)
     })
     }
     useEffect(()=>{
         fetchValue()
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.location.pathname])
+    const modules = {
+        toolbar: [
+          [{ 'header': [1, 2, false] }],
+          ['bold', 'italic', 'underline','strike', 'blockquote'],
+          [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+          ['clean']
+        ],
+      }
     return (
         <div className="notes-modal">
-            {/* For Heading */}
-            {console.log(text.title)}
-            <textarea
-                className="header-input"
-                placeholder="Title"
-                value={text.title||""}
-                onChange={changeHandlerTitle}
+            {
+            isloading
+
+                ?
+                <ReactLoader/>
+            :<div className="notes-modal">
+                <textarea
+                 className="header-input"
+                 placeholder="Title"
+                 value={text.title||""}
+                 onChange={changeHandlerTitle}
+                 />
+                <ReactQuill
+                    value={text.mainNote || ""}
+                    onChange={changeHandler}   
+                    placeholder="Write your note here"
+                    modules={modules}
             />
-            <hr/>
-            <ReactQuill 
-                value={text.mainNote || ""}
-                onChange={changeHandler}   
-                placeholder="Write your note here"
-            />
+            </div>}
         </div>
     )
 }
