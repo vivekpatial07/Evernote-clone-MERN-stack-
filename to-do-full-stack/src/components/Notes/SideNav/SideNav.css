@@ -21,8 +21,12 @@
 
 
 .sidenotes:hover{
-        background-color: blue;
+        background-color: grey;
         cursor: pointer;
+}
+
+.activenote {
+    background-color: grey;
 }
 /* style={{
     //     height:"27px",

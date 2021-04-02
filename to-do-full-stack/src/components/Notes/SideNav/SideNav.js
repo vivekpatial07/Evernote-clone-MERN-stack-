@@ -26,6 +26,7 @@ function SideNav(props) {
         if(!props.location.pathname.includes('/task/')){
             dispatch(showModal(false))
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.location.pathname])
     return (
         <div className='sideNav'>
@@ -46,7 +47,9 @@ function SideNav(props) {
            >{notes?.map(note=>{
                 return(  
                     <div 
-                    className="sidenotes"
+                    className={props.location.pathname.includes(note._id)
+                        ?"sidenotes activenote"
+                        : "sidenotes"}
                     
                     onClick={()=>{props.history.push(`/task/${note._id}`)}}
                     >

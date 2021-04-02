@@ -8,41 +8,27 @@ router.route('/task').get((req,res)=>{
     .catch(err=>res.status(400).json("Error"+err))
 })
 
-// .put((req,res)=>{
-    // console.log(req.body)
-    // const notes = new Note({
-    //     mainNote:req.body.mainNote,
-    // })
-    // console.log(notes)
-    // notes.save()
-    // .then(()=>res.json("note added"))
-    // .catch(err=>res.status(400).json('error'))
-// })
 
 
 
 router.route('/task/:id').get((req,res)=>{
     const id = req.params.id
-    console.log(id)
     Note.findById(id,(err,note)=>{
         res.json(note)
     })
-}).put((req,res)=>{
-    console.log(req.body)
-    const blah = req.body.mainNote
-    const note = {
-        mainNote:req.body.mainNote,
-        //noteType:'normal'
-    }
-    console.log(req.params.id)
-    Note.findByIdAndUpdate(req.params.id,note,(err,data)=>{
-        // res.status(200).json('updated')
-        console.log(data)
-    })
 })
 
-
-
-
-
+router.route('/task/:id').put((req,res)=>{
+    // console.log(req.body)
+    const note = {
+        mainNote:req.body.mainNote,
+        title: req.body.title
+        //noteType:'normal'
+    }
+    console.log(note)
+    Note.findByIdAndUpdate(req.params.id,note,(err,data)=>{
+        res.status(200).json(data)
+        // console.log(data)
+    })
+})
 module.exports = router

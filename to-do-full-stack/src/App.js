@@ -3,9 +3,9 @@ import AddTodo from './components/Todo/AddTodo/AddTodo'
 import './App.css'
 import Main from './components/Notes/Main/Main'
 import Nav from './components/Nav/Nav'
-import {Route,Redirect, Switch} from 'react-router-dom'
-import SideNav from './components/Notes/SideNav/SideNav'
-import AddNoteModal from './components/Notes/AddNoteModal/AddNoteModal'
+import {Route, Switch} from 'react-router-dom'
+// import SideNav from './components/Notes/SideNav/SideNav'
+// import AddNoteModal from './components/Notes/AddNoteModal/AddNoteModal'
 // font style to be changed
 function App() {
   return (
