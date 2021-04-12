@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './NotesContainer.css'
+import {useDispatch, useSelector} from 'react-redux'
 import { AnimatePresence, motion } from "framer-motion";
 import ScratchPad from '../../ScratchPad/ScratchPad';
 import { withRouter } from 'react-router';
-import { removeHTMLTags } from '../../helpers/helpers';
-import ReactQuill from 'react-quill'
+// import { removeHTMLTags } from '../../helpers/helpers';
+import ReactQuill from 'react-quill';
+import { fetchNotes } from '../../../../redux/actionCreator';
+import { noteSelector } from '../../../../redux/selector';
+import ReactLoader from '../../../Loader/ReactLoader'
+// import IMG from '../Assets/img.jpg'
 function NotesContainer({notes, history}) {
     const noteClicked = (e,id) =>{
         history.push(`task/${id}`)
-
     }
-    const data = notes.map(note=>{
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        dispatch(fetchNotes())
+    },[])
+    const state = useSelector(noteSelector)
+    const data = state.notes.map(note=>{
         return <motion.div 
                 initial={{scale:0}}
                 animate={{scale:1}} 
@@ -39,7 +48,10 @@ function NotesContainer({notes, history}) {
     })
     return (
         <div className="container-right" >
-            <div className="notes-heading">NeverNote</div>
+            {/* <div className="notes-heading"> */}
+            {/* <img src={IMG} alt="pc"/> */}
+            {/* </div> */}
+            {state.notesLoader?<ReactLoader />:
             <motion.div
                 animate={{scale:1}}
                 initial={{scale:0.7}}
@@ -50,7 +62,8 @@ function NotesContainer({notes, history}) {
                     :<AnimatePresence>{data}</AnimatePresence>
                 }
             </motion.div>
-            <ScratchPad/>
+            }
+            {/* <ScratchPad/> */}
         </div>
     )
 }

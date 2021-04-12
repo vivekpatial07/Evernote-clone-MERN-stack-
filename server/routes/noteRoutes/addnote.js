@@ -11,7 +11,15 @@ router.route('/task').get((req,res)=>{
 
 
 
+router.post('/task',((req,res)=>{
+    const note = new Note({
+        mainNote: req.body.mainNote,
+        title: req.body.title
+    })
+    note.save().then(()=>res.json('note added'))
+    .catch (err=>res.status(400).json(`Error ${err}`))
 
+}))
 router.put('/task/:id',((req,res)=>{
     // console.log(req.body)
     const note = {

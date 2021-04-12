@@ -17,3 +17,46 @@ export const storeNotes = (data) => {
         payload:data
     }
 }
+
+export const fetchNotes = () => {
+    return {
+        type:actionTypes.FETCH_NOTES,
+    }
+}
+
+export const fetchNoteSuccess = (data) => {
+    return {
+        type:actionTypes.FETCH_NOTES_SUCCESS,
+        payload:data
+    }
+}
+
+export const fetchCurrentNote = (data) => {
+    return {
+        type: actionTypes.FETCH_CURRENT_NOTE,
+        payload:data
+        
+    }
+}
+
+
+export const fetchCurrentNoteSuccess = (data) => {
+    return {
+        type: actionTypes.FETCH_CURRNOTE_SUCCESS,
+        payload: data
+    }
+}
+
+export const saveNote = () => {
+    return {
+        type: actionTypes.SAVE_NOTE,
+
+    }
+}
+
+export const saveNoteSuccess = (data) => {
+    return {
+        type: actionTypes.SAVE_NOTE_SUCCESS,
+        payload: data
+    }
+}

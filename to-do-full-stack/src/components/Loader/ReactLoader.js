@@ -1,10 +1,10 @@
 import React from 'react'
 import { Dimmer, Loader, Segment, } from 'semantic-ui-react'
-
+import './ReactLoader.css'
 const ReactLoader = () => (
     <Segment>
 
-    <Dimmer active>
+    <Dimmer active inverted>
       <Loader />
     </Dimmer>
     </Segment>

@@ -12,34 +12,19 @@ import { withRouter } from 'react-router-dom'
 function Main(props) {
     const state = useSelector(noteSelector)
     const dispatch = useDispatch()
-    
     const [allNotes,setAllNotes] = useState([])
-    // const changeHandler = (e) => {
-    //     const currentNote = {...note};
-    //     currentNote.mainNote = e.target.value
-    //     setnote(currentNote)
+    // const fetchFromDb = async() =>{
+    //     const res = await axios.get('http://localhost:7777/task')
+    //     console.log(res)
+    //     console.log(res.data)
+    //     setAllNotes(res.data)
+    //     // store notes in redux store
+    //     dispatch(storeNotes(res.data))
     // }
-    // const addnotes = () => {
-    //     console.log(note)
-    //     axios.post('http://localhost:7777/task',note).then(res=>{
-    //         fetchFromDb()
-    //         console.log(res)
-    //         dispatch(showModal(false))
-    //     })
-    // }
-    const fetchFromDb = async() =>{
-        const res = await axios.get('http://localhost:7777/task')
-        console.log(res)
-        console.log(res.data)
-        // setnote
-        setAllNotes(res.data)
-        // store notes in redux store
-        dispatch(storeNotes(res.data))
-    }
-    useEffect(()=>{
-        // will use redux saga after this
-        fetchFromDb()
-    },[])
+    // useEffect(()=>{
+    //     // will use redux saga after this
+    //     fetchFromDb()
+    // },[])
     return (
         <div>
             <div style={{display:"flex", flexDirection:'row',height:"100vh"}}>
@@ -50,13 +35,7 @@ function Main(props) {
                    state.showModal 
                     ||props.location.pathname.includes('task/')?
                     <AddNoteModal/>:<NotesContainer notes={allNotes}/>
-                    // <div style={{position:'absolute',left:"770px"}}>
-                    // {/* <AddNoteModal /> */}
-                    // <input type='text' onChange={changeHandler}/>
-                    // <button onClick={addnotes}>Add</button>
-                    // </div>
                 }
-             {/* {!state.showModal?/>} */}
             </div>
         </div>
     )

@@ -33,7 +33,7 @@ function SideNav(props) {
             <p style={{fontSize:'27px'}}>
             NeverNote
             </p>
-            <Button primary onClick={showNoteModal}>Add Note</Button>
+            <Button  onClick={showNoteModal}>Add Note</Button>
            <div className="sidenote-container">{notes?.map(note=>{
                 return(  
                     <div 

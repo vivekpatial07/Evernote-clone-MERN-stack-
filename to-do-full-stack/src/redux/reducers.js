@@ -13,7 +13,9 @@ const todoReducer = (state=initialState,action) => {
 }
 const initialNoteState = {
     showModal:false,
-    notes:[]
+    notes:[],
+    notesLoader:true,
+    currentNote:null
 
 }
 const noteReducer = (state = initialNoteState , action ) => {
@@ -27,6 +29,28 @@ const noteReducer = (state = initialNoteState , action ) => {
             return {
                     ...state,
                     notes:[...action.payload]
+            }
+        case actionTypes.FETCH_NOTES:
+            return {
+                ...state,
+                notesLoader:true
+            }
+        case actionTypes.FETCH_NOTES_SUCCESS:
+            return {
+                ...state,
+                notes:[...action.payload],
+                notesLoader:false
+            }
+        case actionTypes.FETCH_CURRENT_NOTE:
+        return {
+             ...state,
+             notesLoader:true   
+            }
+        case actionTypes.FETCH_CURRNOTE_SUCCESS:    
+            return {
+                ...state,
+                currentNote:action.payload,
+                notesLoader:false
             }
             default:
                 return state

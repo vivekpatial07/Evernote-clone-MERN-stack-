@@ -9,7 +9,8 @@
     border-radius: 7px;
     background: #fff4ba;
     border-color: #ffeb82;
-    margin-top: 61px;
+    margin-top: 140px;
+    margin-left: 10px;
 }
 .scratchpad{
     border-color: #ffeb82;
@@ -22,6 +23,7 @@
     font-size: 18px !important;
     font-weight: 400 !important;
     color: gray;
+    top:"100px"
 }
 .scratchpad:focus{
     outline: none;
