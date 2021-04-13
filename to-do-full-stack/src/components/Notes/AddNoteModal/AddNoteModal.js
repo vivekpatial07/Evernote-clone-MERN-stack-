@@ -1,4 +1,4 @@
-import React,{ useEffect, useState, useCallback} from 'react'
+import React,{ useEffect, useState, useCallback,useRef} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import ReactQuill from "react-quill";
 import './AddNoteModal.css'
@@ -11,30 +11,32 @@ import {
     saveNote
 } from '../../../redux/actionCreator';
 import { noteSelector } from '../../../redux/selector';
-
 function AddNoteModal() {
     const initalState = {
         title:"",
         mainNote:""
     }
     const dispatch = useDispatch()
+    const shouldRun = useRef(false)
     const state = useSelector(noteSelector)
     const [text,settext] = useState(initalState)
     let location = useLocation()
-    
     useEffect(()=>{
         if(!location.pathname.includes('add')){
             settext(state.currentNote)
         }
+        else{
+            settext(initalState)
+        }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     },[state,location.pathname])
-    console.log(text)
-    
     const dbcall = (note, id) =>{
         if(id.includes('add')){
             dispatch(saveNote(note,id))
         }
         else {
             dispatch(editNoteInit(note))
+
         }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,31 +45,24 @@ function AddNoteModal() {
 		, []
 	)
     const changeHandler = (e) => {
+        if(shouldRun.current){
         const id = location.pathname.split('/')[2]
-        console.log(text)
-        let note = {...text}
-        if(text?._id) {
-            note = {...text}
-            note.mainNote = e
-            console.log(note)
-            settext(note)
-            dbSave(note,id) 
-        
-        }else{
-            note.mainNote = e
-            settext(note)
-            dbSave(note,id) 
-        }
+        const note = {...text}
+        note.mainNote = e
+        console.log(note)
+        settext(note)
+        dbSave(note,id)
+    }
+        shouldRun.current = true
     }
 
     const changeHandlerTitle = (e) => {
         const id = location.pathname.split('/')[2]
-        if(text?._id){
-            const note = {...text}
-            note.title = e.target.value
-            settext(note)
-            dbSave(note,id)
-        }
+        const note = {...text}
+        note.title = e.target.value
+        console.log(note)
+        dbSave(note,id)
+        settext(note)
     }
 
     useEffect(()=>{
@@ -94,11 +89,11 @@ function AddNoteModal() {
                  <textarea
                   className="header-input"
                   placeholder="Title"
-                  value={text?.title || ""}
+                  value={text&&text.title}
                   onChange={changeHandlerTitle}
                   />
                  <ReactQuill
-                     value={text?.mainNote || ""}
+                     value={text&&text.mainNote}
                      onChange={changeHandler}   
                      placeholder="Write your note here"
                      modules={modules}

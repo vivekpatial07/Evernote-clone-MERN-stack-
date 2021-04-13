@@ -6,7 +6,6 @@ export function* fetchNotesSaga() {
     const data = yield axios.get('http://localhost:7777/task').then((res)=>{
        return res
     })
-    console.log(data)
     try{
     yield put(fetchNoteSuccess(data.data))
     }
@@ -20,7 +19,6 @@ export function* fetchCurrNoteSaga(data) {
     const currNote = yield axios.get(`http://localhost:7777${pathname}`).then((res)=>{ 
         return res.data
     })
-    console.log(currNote)
     try {
         yield put(fetchCurrentNoteSuccess(currNote))
     }

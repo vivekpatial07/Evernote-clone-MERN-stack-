@@ -14,7 +14,7 @@ router.route('/task').get((req,res)=>{
 router.post('/task',((req,res)=>{
     console.log('ss')
     const note = new Note({
-        mainNote: req.body.mainNote,
+        mainNote: req.body.mainNote||"PLEASE WRITE SOMETHING`",
         title: req.body.title||'title' //validation to be added if something is emplty show toaster or just save with common text like this
     })
     note.save().then(()=>res.json('note added'))
