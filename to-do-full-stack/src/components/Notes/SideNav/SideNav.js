@@ -15,7 +15,7 @@ function SideNav(props) {
     }
     const fetchFromDb = async() => {
         const res = await axios.get('http://localhost:7777/task')
-        console.log(res.data)
+        // console.log(res.data)
         setnotes(res.data)
     }
     useEffect(() => {
