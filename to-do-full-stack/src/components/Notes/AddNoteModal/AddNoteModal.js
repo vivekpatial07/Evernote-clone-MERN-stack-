@@ -24,9 +24,11 @@ function AddNoteModal() {
     const initalState = {
         title:"",
         mainNote:"",
+        noteType: "normal"
     }
     const dispatch = useDispatch()
-    const shouldRun = useRef(false)
+    // const shouldRun = useRef(false)
+    const [shouldRun, setShouldRun] = useState(false)
     const state = useSelector(noteSelector)
     const [text,settext] = useState(initalState)
     // const [shouldPush,setShouldPush] = useState(true)
@@ -40,7 +42,10 @@ function AddNoteModal() {
         }
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[state,location.pathname])
-    
+    useEffect(()=>{
+        // alert('ss')
+        setShouldRun(false)
+    },[location.pathname])
     const dbcall = (note, id) =>{
         if(id.includes('edit')){
             dispatch(editNoteInit(note))
@@ -59,16 +64,16 @@ function AddNoteModal() {
 	)
     
     const changeHandler = (e) => {
-        if(shouldRun.current){
+        if(shouldRun){
         const id = location.pathname.split('/')[2]
         const note = {...text}
         note._id = id
         note.mainNote = e
-        console.log(note)
+        console.log(note,'quill')
         settext(note)
         dbSave(note,id)
     }
-        shouldRun.current = true
+        setShouldRun(true)
     }
 
     const changeHandlerTitle = (e) => {
@@ -76,13 +81,12 @@ function AddNoteModal() {
         const note = {...text}
         note._id = id
         note.title = e.target.value
-        console.log(note)
+        console.log(note,'title')
         dbSave(note,id)
         settext(note)
     }
 
     useEffect(()=>{
-        console.log(location.pathname.split('/')[2])
         if(location.pathname.includes('edit')){
             dispatch(fetchCurrentNote(location.pathname.split('/')[2]))
         }
@@ -103,7 +107,11 @@ function AddNoteModal() {
         id,
         noteType: 'important'
     }
+    const note = {...text}
+    note.noteType = "important"
+       settext(note)
        dispatch(starUnstar(data))
+    
    }
    const unstarNote = () => {
     const id = location.pathname.split('/')[2]
@@ -111,6 +119,9 @@ function AddNoteModal() {
         id,
         noteType: 'normal'
     }
+        const note ={...text}
+        note.noteType = 'normal'
+        settext(note)
        dispatch(starUnstar(data))
    }
     return (
@@ -130,7 +141,7 @@ function AddNoteModal() {
                     />
                     {/* use ref property here for handling multiple onclicks*/}
                     <div className="header-icon">
-                        {state.currentNote?.noteType==="important"
+                        {text?.noteType==="important"
                         ?<Icon size="big" name="star" onClick={unstarNote}/>
                         :<Icon size="big" name="star outline" onClick={starNote}/>}
                     </div>
