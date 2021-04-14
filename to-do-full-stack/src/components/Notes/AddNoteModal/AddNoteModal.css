@@ -21,7 +21,7 @@
     vertical-align: middle;
     border:none;
     resize: none;
-    width: 100% !important;
+    /* width: 81% !important; */
     padding: 0 20px;
     font-weight:100;
     color: gray;
@@ -36,4 +36,17 @@
     vertical-align: middle;
 
 
+}
+.top-bar{
+    display: flex;
+    width: 1330px;
+    background-color: #FFFFFF;
+    justify-content: space-between;
+}
+.header-icon{
+    height: 61px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFFFFF;
 }

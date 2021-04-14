@@ -23,7 +23,8 @@ const noteReducer = (state = initialNoteState , action ) => {
         case actionTypes.SHOW_MODAL:
             return {
                 ...state,
-                showModal:action.payload
+                showModal:action.payload,
+                notesLoader: false
             }
         case actionTypes.STORE_NOTES:
             return {

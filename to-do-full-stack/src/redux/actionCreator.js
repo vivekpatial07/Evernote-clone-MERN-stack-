@@ -75,3 +75,15 @@ export const saveNoteSuccess = (data) => {
         payload: data
     }
 }
+export const starUnstar = (data) => {
+    return {
+        type: actionTypes.STAR_UNSTAR,
+        payload: data
+    }
+}
+export const starUnstarSuccuss = (data) => {
+    return {
+        type:actionTypes.STAR_UNSTAR_SUCCESS,
+        payload: data
+    }
+}

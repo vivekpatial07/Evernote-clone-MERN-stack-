@@ -1,7 +1,7 @@
 .notes-container{
     height: 500px;
     box-shadow: 2px 2px 2px 2px #ccc;
-    width: 72vw;
+    width: 1200px;
     display: flex;
     overflow-x: auto;
     border-radius: 7px;

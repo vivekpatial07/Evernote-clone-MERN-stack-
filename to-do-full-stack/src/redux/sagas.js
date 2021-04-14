@@ -4,7 +4,8 @@ import {
   fetchNotesSaga,
   saveNoteSaga,
   fetchCurrNoteSaga,
-  editNoteSaga
+  editNoteSaga,
+  starUnstarSaga
   
 } from './notesSaga'
 export default function* watcherSaga() {
@@ -13,4 +14,5 @@ export default function* watcherSaga() {
     yield takeLatest(actionTypes.FETCH_CURRENT_NOTE, fetchCurrNoteSaga)
     yield takeLatest(actionTypes.EDIT_NOTE_INIT, editNoteSaga)
     yield takeLatest(actionTypes.SAVE_NOTE, saveNoteSaga)
+    yield takeLatest(actionTypes.STAR_UNSTAR, starUnstarSaga)
   }

@@ -16,8 +16,10 @@ export function* fetchNotesSaga() {
 
 export function* fetchCurrNoteSaga(data) {
     const pathname = yield data.payload
-    const currNote = yield axios.get(`http://localhost:7777${pathname}`).then((res)=>{ 
-        return res.data
+    yield console.log(pathname)
+    const currNote = yield axios.get(`http://localhost:7777/task/${pathname}`).then((res)=>{ 
+    console.log('jsflka')
+    return res.data
     })
     try {
         yield put(fetchCurrentNoteSuccess(currNote))
@@ -45,4 +47,10 @@ export function* saveNoteSaga(data) {
     }).catch((err)=>{
         console.log(err)
     })
+}
+
+export function* starUnstarSaga(data) {
+     yield console.log(data.payload)
+    //whole document is changing if I use put/post changing find a better way
+    yield axios.put(`http://localhost:7777/task/${data.payload.id}/edit`,data.payload)
 }

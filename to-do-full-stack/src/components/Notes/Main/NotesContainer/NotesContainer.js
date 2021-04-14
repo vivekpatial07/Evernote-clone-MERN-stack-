@@ -12,7 +12,7 @@ import ReactLoader from '../../../Loader/ReactLoader'
 // import IMG from '../Assets/img.jpg'
 function NotesContainer({notes, history}) {
     const noteClicked = (e,id) =>{
-        history.push(`task/${id}`)
+        history.push(`task/${id}/edit`)
     }
     const dispatch = useDispatch()
     useEffect(()=>{
