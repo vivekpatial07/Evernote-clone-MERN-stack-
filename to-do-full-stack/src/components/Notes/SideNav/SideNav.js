@@ -11,6 +11,7 @@ import {Tab} from 'semantic-ui-react'
 
 
 //for sidenotes you can set loader to true then to false to get the desired data on sidebar
+//or maybe use sockets or watch evernote clone tutorial
 
 function SideNav(props) {
     const [notes,setnotes] = useState()

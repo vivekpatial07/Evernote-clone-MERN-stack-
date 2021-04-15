@@ -41,7 +41,6 @@ router.post('/task',((req,res)=>{
 
 router.put('/task/:id/edit',((req,res)=>{
     if(req.body.noteType==="important"){
-        console.log('1')
         const note = {
             noteType:req.body.noteType
         }
@@ -50,7 +49,6 @@ router.put('/task/:id/edit',((req,res)=>{
         })
     }
     else if(req.body.noteType==="normal"){
-        console.log('7')
         const note = {
             noteType:req.body.noteType
         }
@@ -59,8 +57,6 @@ router.put('/task/:id/edit',((req,res)=>{
         })
     }
     else{
-        console.log('2')
-
         const note = {
             mainNote:req.body.mainNote,
             title: req.body.title,

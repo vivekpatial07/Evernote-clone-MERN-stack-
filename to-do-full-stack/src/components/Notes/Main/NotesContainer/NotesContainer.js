@@ -21,13 +21,13 @@ function NotesContainer({notes, history}) {
     const state = useSelector(noteSelector)
     const data = state.notes.map(note=>{
         return <motion.div 
-                initial={{scale:0}}
-                animate={{scale:1}} 
-                exit={{scale:0}}
-                whileHover={{scale:1.06}}
-                key={note.id}
-                className="single-note"
-                onClick={(e)=>noteClicked(e,note._id)}
+                    initial={{scale:0}}
+                    animate={{scale:1}}
+                    exit={{scale:0}}
+                    whileHover={{scale:1.06}}
+                    key={note.id}
+                    className="single-note"
+                    onClick={(e)=>noteClicked(e,note._id)}
                 >
                  <h2>
                  {note.title}
