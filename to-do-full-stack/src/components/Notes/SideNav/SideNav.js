@@ -69,6 +69,7 @@ function SideNav(props) {
         <div className='sideNav'>
             <p
                 onClick={()=>{props.history.push('/task')}}
+                className="sidenav-header"
                 style={{fontSize:'27px'}}>
             NeverNote
             </p>

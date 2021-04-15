@@ -64,3 +64,11 @@
 .TabWrapper .ui.attached.tabular.menu {
     width: 150px !important;
 }
+
+.sidenav-header {
+    font-size: 24px;
+}
+
+.sidenav-header:hover{
+    cursor: pointer;
+}
