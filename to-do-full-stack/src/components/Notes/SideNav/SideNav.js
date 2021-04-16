@@ -11,10 +11,11 @@ import {Tab} from 'semantic-ui-react'
 
 
 //for sidenotes you can set loader to true then to false to get the desired data on sidebar
-//or maybe use sockets or watch evernote clone tutorial
+//or maybe use sockets or watch evernote clone tutorial or maybe just use redux tutorial
 
 function SideNav(props) {
     const [notes,setnotes] = useState()
+    const [todos,settodos] = useState()
     const dispatch = useDispatch()
     const showNoteModal = () => {
         dispatch(showModal(true))
@@ -26,8 +27,17 @@ function SideNav(props) {
         // console.log(res.data)
         setnotes(res.data)
     }
+    const fetchTodoFromDb = async() => {
+        axios.get('http://localhost:7777/todo').then(res=>{
+        settodos(res.data)
+        console.log(res.data)
+    }).catch(err=>{
+		console.log(err)
+		})
+    }
     useEffect(() => {
         fetchFromDb()
+        fetchTodoFromDb()
     },[])
 
     useEffect(() => {
@@ -37,6 +47,23 @@ function SideNav(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.location.pathname])
     //use loading prop inside tab.pane
+    const sideTodo = todos?.map(todo=>{
+        return (<div 
+            key={uuidv4()}
+            className={props.location.pathname.includes(todo._id)
+                ?"sidenotes activenote"
+                : "sidenotes"}
+            
+            // onClick={()=>{props.history.push(`/task/${todo._id}/edit`)}}
+            >
+            <span style={{marginLeft:"14px"}}>
+            <Icon name="pencil alternate" />
+            {todo.task}
+            </span>
+        </div>
+        )
+    }) 
+   
     const panes = [
         {
             menuItem: 'Notes',
@@ -44,7 +71,7 @@ function SideNav(props) {
         },
         {
             menuItem: 'Todos',
-            render: () => <Tab.Pane attached={false}>TODOS will be shown here</Tab.Pane>
+            render: () => <Tab.Pane attached={false}>{sideTodo}</Tab.Pane>
         }
     ]
     const sidenotes = notes?.map(note=>{
@@ -79,8 +106,6 @@ function SideNav(props) {
                </div> 
            {/* <div className="sidenote-container">{}
             </div> */}
-
-
         </div>
     )
 }
