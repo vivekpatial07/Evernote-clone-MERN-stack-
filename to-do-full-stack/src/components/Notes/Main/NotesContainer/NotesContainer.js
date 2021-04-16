@@ -6,7 +6,7 @@ import ScratchPad from '../../ScratchPad/ScratchPad';
 import { withRouter } from 'react-router';
 // import { removeHTMLTags } from '../../helpers/helpers';
 import ReactQuill from 'react-quill';
-import { fetchNotes } from '../../../../redux/actionCreator';
+import { fetchNotes, fetchImportantNotes } from '../../../../redux/actionCreator';
 import { noteSelector } from '../../../../redux/selector';
 import ReactLoader from '../../../Loader/ReactLoader'
 // import IMG from '../Assets/img.jpg'
@@ -17,6 +17,7 @@ function NotesContainer({notes, history}) {
     const dispatch = useDispatch()
     useEffect(()=>{
         dispatch(fetchNotes())
+        dispatch(fetchImportantNotes())
     },[])
     const state = useSelector(noteSelector)
     const data = state.notes.map(note=>{

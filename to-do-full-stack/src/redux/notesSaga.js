@@ -1,5 +1,5 @@
 import {put} from 'redux-saga/effects'
-import {fetchCurrentNoteSuccess, fetchNoteSuccess} from './actionCreator'
+import {fetchCurrentNoteSuccess, fetchImportantNotesSuccess, fetchNoteSuccess} from './actionCreator'
 import axios from 'axios'
 
 export function* fetchNotesSaga() {
@@ -18,7 +18,6 @@ export function* fetchCurrNoteSaga(data) {
     const pathname = yield data.payload
     yield console.log(pathname)
     const currNote = yield axios.get(`http://localhost:7777/task/${pathname}`).then((res)=>{ 
-    console.log('jsflka')
     return res.data
     })
     try {
@@ -53,4 +52,19 @@ export function* starUnstarSaga(data) {
      yield console.log(data.payload)
     //whole document is changing if I use put/post changing find a better way
     yield axios.put(`http://localhost:7777/task/${data.payload.id}/edit`,data.payload)
+}
+
+
+export function* fetchImportantNotesSaga() {
+    const importantNotes = yield axios.get('http://localhost:7777/task/important')
+    .then(res=>res)
+    try{
+     yield put(fetchImportantNotesSuccess(importantNotes.data))
+    }
+    catch{
+        console.log('error')
+        alert('error')
+
+    }
+
 }

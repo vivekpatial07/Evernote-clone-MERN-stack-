@@ -1,5 +1,6 @@
 import * as actionTypes from "./actionTypes";
 import {  combineReducers } from "redux";
+import { actionChannel } from "@redux-saga/core/effects";
 const initialState = []
 const todoReducer = (state=initialState,action) => {
     switch(action.type){
@@ -15,7 +16,8 @@ const initialNoteState = {
     showModal:false,
     notes:[],
     notesLoader:true,
-    currentNote:null
+    currentNote:null,
+    importantNotes:[]
 
 }
 const noteReducer = (state = initialNoteState , action ) => {
@@ -41,6 +43,17 @@ const noteReducer = (state = initialNoteState , action ) => {
                 ...state,
                 notes:[...action.payload],
                 notesLoader:false
+            }
+        // case actionChannel.FETCH_IMPORTANT_NOTES_INIT:
+        //     return {
+        //         ...state,
+        //         notesLoader:true
+        //     }
+        case actionTypes.FETCH_IMPORTANT_NOTES_SUCCESS:
+            return {
+                ...state,
+                importantNotes:[...action.payload],
+                // notesLoader:false
             }
         case actionTypes.FETCH_CURRENT_NOTE:
         return {

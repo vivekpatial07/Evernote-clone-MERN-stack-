@@ -8,6 +8,15 @@ router.route('/task').get((req,res)=>{
     .catch(err=>res.status(400).json("Error"+err))
 })
 
+ router.route('/task/important').get((req,res)=> {
+    Note.find({noteType:"important"}).then((impNotes)=>{
+        res.json(impNotes)
+        console.log(impNotes)
+    }).catch(err=>{
+        console.log(err)
+    })
+})
+ 
 
 
 
