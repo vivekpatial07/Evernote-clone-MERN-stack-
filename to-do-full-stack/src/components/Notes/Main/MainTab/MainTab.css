@@ -1,0 +1,25 @@
+.tab {
+  overflow-x: hidden;
+}
+.tab .ui {
+  display: flex !important;
+  overflow-x: auto !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.tab .ui.attached.tabular.menu {
+  overflow: hidden !important;
+}
+
+
+.tab .ui.tab.active, .ui.tab.open{
+  overflow-x: hidden !important;
+}
+.tab .ui.tab.active,.ui.tab.open :hover {
+  overflow-x: scroll !important;
+}
+.tab .ui.segment {
+  margin: 5rem 0 !important;
+}

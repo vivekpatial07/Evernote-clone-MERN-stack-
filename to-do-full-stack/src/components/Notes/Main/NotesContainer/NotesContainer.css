@@ -11,7 +11,6 @@
     top: 100px;
     background: rgb(90,180,251);
     background: linear-gradient(169deg, rgba(90,180,251,1) 0%, rgba(50,127,242,1) 100%);    
-
 }
 
 .notes-container::-webkit-scrollbar { 
@@ -60,10 +59,10 @@
     height: 400px;
 }
 .text-area .ql-editor {
-min-height: 100px;    
+    min-height: 100px;    
 }
 .text-area .ql-editor > *{
-        cursor: pointer !important;
+     cursor: pointer !important;
 }
 
 /*  

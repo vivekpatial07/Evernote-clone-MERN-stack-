@@ -8,7 +8,8 @@ import { withRouter } from 'react-router';
 import ReactQuill from 'react-quill';
 import { fetchNotes, fetchImportantNotes } from '../../../../redux/actionCreator';
 import { noteSelector } from '../../../../redux/selector';
-import ReactLoader from '../../../Loader/ReactLoader'
+import ReactLoader from '../../../Loader/ReactLoader';
+import MainTab from '../MainTab/MainTab';
 // import IMG from '../Assets/img.jpg'
 function NotesContainer({notes, history}) {
     const noteClicked = (e,id) =>{
@@ -21,7 +22,7 @@ function NotesContainer({notes, history}) {
     },[])
     const state = useSelector(noteSelector)
     const data = state.notes.map(note=>{
-        return <motion.div 
+        return <div 
                     initial={{scale:0}}
                     animate={{scale:1}}
                     exit={{scale:0}}
@@ -45,7 +46,22 @@ function NotesContainer({notes, history}) {
                      <div className="text-area"></div>
                  </ReactQuill>
                    </div>
-                </motion.div>
+                </div>
+    })
+    const importantData = state.importantNotes.map((impNote)=>{
+        return <div
+                    key={impNote._id}
+                    className="single-note">
+                        <h2>{impNote.title}</h2>
+                        <div className="containerQuill">
+                     <ReactQuill 
+                        theme={null}
+                        value={impNote.mainNote}
+                 >
+                     <div className="text-area"></div>
+                 </ReactQuill>
+                     </div>
+                    </div>
     })
     return (
         <div className="container-right" >
@@ -53,16 +69,25 @@ function NotesContainer({notes, history}) {
             {/* <img src={IMG} alt="pc"/> */}
             {/* </div> */}
             {state.notesLoader?<ReactLoader />:
-            <motion.div
+            <div
                 animate={{scale:1}}
                 initial={{scale:0.7}}
                 transition={{duration:0.7}}
                 className="notes-container">
-                {data.length===0
-                    ?<p style={{margin:"auto"}}>Add Notes</p>
-                    :<AnimatePresence>{data}</AnimatePresence>
-                }
-            </motion.div>
+                    <MainTab
+                        firstTabName="All Notes"
+                        secondTabName="Important Notes"
+                        firstChild={data.length===0
+                            ?<p style={{margin:"auto"}}>Add Notes</p>
+                            :<AnimatePresence>{data}</AnimatePresence>
+                        }
+                        secondChild={importantData===0
+                            ?<p style={{margin:'auto'}}>Star Notes</p>
+                            :importantData
+                        }
+                            />
+                
+            </div>
             }
             {/* <ScratchPad/> */}
         </div>
