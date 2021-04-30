@@ -3,7 +3,7 @@ const { check , validationResult} = require('express-validator')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const User = require('../../models/userModel/userSignin')
+const User = require('../../models/userModel/userModel')
 router.post(
     "/login",
     [
@@ -28,7 +28,7 @@ router.post(
         });
         if (!user)
           return res.status(400).json({
-            message: "User Not Exist"
+            message: "User Not Found"
           });
   
         const isMatch = await bcrypt.compare(password, user.password);

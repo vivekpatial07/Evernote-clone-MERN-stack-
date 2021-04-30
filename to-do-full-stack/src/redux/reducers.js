@@ -70,7 +70,24 @@ const noteReducer = (state = initialNoteState , action ) => {
                 return state
     }
 }
+const initialAuthState = {
+    isLoggedIn:false
+}
+
+const authReducer = (state=initialAuthState, action) => {
+    switch(action.type){
+        case actionTypes.SIGN_UP_SUCCESS:
+            return {
+                ...state,
+                isLoggedIn:true
+            }
+    default:
+        return state
+}
+}
+
 export const rootReducers = combineReducers({
     todo:todoReducer,
-    note:noteReducer
+    note:noteReducer,
+    auth:authReducer
 })

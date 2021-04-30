@@ -26,11 +26,11 @@
  border-radius: 27px;
 }
 
-form{
+/* form{
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 .controller{
     display: flex;
     margin: 7px;

@@ -6,9 +6,11 @@ import {
   fetchCurrNoteSaga,
   editNoteSaga,
   starUnstarSaga,
-  fetchImportantNotesSaga
-  
+  fetchImportantNotesSaga,
 } from './notesSaga'
+import {
+  signUpSaga
+} from './authSaga'
 export default function* watcherSaga() {
   // ----------------------- NOTES--------------------------------------- //
     yield takeLatest(actionTypes.FETCH_NOTES, fetchNotesSaga)
@@ -17,4 +19,6 @@ export default function* watcherSaga() {
     yield takeLatest(actionTypes.SAVE_NOTE, saveNoteSaga)
     yield takeLatest(actionTypes.STAR_UNSTAR, starUnstarSaga)
     yield takeLatest(actionTypes.FETCH_IMPORTANT_NOTES_INIT, fetchImportantNotesSaga)
+    // --------------------------AUTH---------------------------------//
+    yield takeLatest(actionTypes.SIGN_UP_INITIATE, signUpSaga)
   }

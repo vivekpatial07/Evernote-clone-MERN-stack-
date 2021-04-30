@@ -95,9 +95,25 @@ export const fetchImportantNotes = () => {
         type:actionTypes.FETCH_IMPORTANT_NOTES_INIT,
     }
 }
+
 export const fetchImportantNotesSuccess = (data) => {
     return {
         type:actionTypes.FETCH_IMPORTANT_NOTES_SUCCESS,
+        payload:data
+    }
+}
+
+export const signUpInitiate = (data) => {
+    return {
+        type:actionTypes.SIGN_UP_INITIATE,
+        payload:data
+    }
+}
+
+export const signUpSuccess = (data) => {
+    console.log('showing')
+    return {
+        type:actionTypes.SIGN_UP_SUCCESS,
         payload:data
     }
 }

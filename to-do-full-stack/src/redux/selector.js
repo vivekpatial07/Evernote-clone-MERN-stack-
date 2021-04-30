@@ -7,3 +7,7 @@ export const noteSelector = createSelector(
     state=>state.note,
     note=>note
 )
+export const authSelector = createSelector(
+    state=>state.auth,
+    auth=>auth
+)

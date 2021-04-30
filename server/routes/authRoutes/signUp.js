@@ -3,12 +3,13 @@ const { check , validationResult} = require('express-validator')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const router = express.Router();
-const User = require('../../models/userModel/userSignin')
+const User = require('../../models/userModel/userModel')
+const generateToken  = require('../../utils/tokenGenerator')
 router.post("/signup",
-    [
-        check("username", "Please Enter a Valid Username")
-        .not()
-        .isEmpty(),
+    [//add this check in route middleware and then put it in a controller function
+        // check("username", "Please Enter a Valid Username")
+        // .not()
+        // .isEmpty(),
         check("email", "Please enter a valid email").isEmail(),
         check("password", "Please enter a valid password").isLength({
             min: 6
@@ -46,26 +47,15 @@ router.post("/signup",
             const salt = await bcrypt.genSalt(10);
             user.password = await bcrypt.hash(password, salt);
 
+            if(user){
+                res.status(201).json({
+                    _id:user._id,
+                    username:user.username,
+                    email:user.email,
+                    token:generateToken(user._id)
+                })
+            }
             await user.save();
-
-            const payload = {
-                user: {
-                    id: user.id
-                }
-            };
-
-            jwt.sign(
-                payload,
-                "randomString", {
-                    expiresIn: 10000
-                },
-                (err, token) => {
-                    if (err) throw err;
-                    res.status(200).json({
-                        token
-                    });
-                }
-            );
         } catch (err) {
             console.log(err.message);
             res.status(500).send("Error in Saving");
