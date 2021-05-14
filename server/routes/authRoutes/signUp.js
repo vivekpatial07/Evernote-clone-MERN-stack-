@@ -1,66 +1,6 @@
 const express = require('express')
-const { check , validationResult} = require('express-validator')
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const { checkValidation }  = require('../../middlewares/authmiddleware')
+const { signup } = require('../../controllers/userController')
 const router = express.Router();
-const User = require('../../models/userModel/userModel')
-const generateToken  = require('../../utils/tokenGenerator')
-router.post("/signup",
-    [//add this check in route middleware and then put it in a controller function
-        // check("username", "Please Enter a Valid Username")
-        // .not()
-        // .isEmpty(),
-        check("email", "Please enter a valid email").isEmail(),
-        check("password", "Please enter a valid password").isLength({
-            min: 6
-        })
-    ],
-    async (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array()
-            });
-        }
-        
-        const {
-            username,
-            email,
-            password
-        } = req.body;
-        try {
-            let user = await User.findOne({
-                email
-            });
-            if (user) {
-                return res.status(400).json({
-                    msg: "User Already Exists"
-                });
-            }
-
-            user = new User({
-                username,
-                email,
-                password
-            });
-
-            const salt = await bcrypt.genSalt(10);
-            user.password = await bcrypt.hash(password, salt);
-
-            if(user){
-                res.status(201).json({
-                    _id:user._id,
-                    username:user.username,
-                    email:user.email,
-                    token:generateToken(user._id)
-                })
-            }
-            await user.save();
-        } catch (err) {
-            console.log(err.message);
-            res.status(500).send("Error in Saving");
-        }
-    }
-        
-)
+router.post("/signup", checkValidation, signup)
 module.exports = router;

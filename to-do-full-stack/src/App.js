@@ -4,14 +4,24 @@ import SignUp from './components/Auth/SignUp'
 import './App.css'
 import Main from './components/Notes/Main/Main'
 import Nav from './components/Nav/Nav'
-import {Route, Switch,Redirect} from 'react-router-dom'
+import {Redirect, Route, Switch} from 'react-router-dom'
+import { useEffect } from 'react'
 // import SideNav from './components/Notes/SideNav/SideNav'
 // import AddNoteModal from './components/Notes/AddNoteModal/AddNoteModal'
 // font style to be changed
 function App() {
+  const user = localStorage.getItem('userInfo')
+
   return (
     <div className="App">
-       {/* <Nav/> */}
+      {/* <Nav/> */}
+      {
+        !user ?
+        <Switch>
+          <Route path="/signup" component={SignUp}/>
+          <Redirect from="/" to="signup" /> 
+        </Switch>
+        :   
         <Switch>
           <Route path='/todo'>  
             <AddTodo/>  
@@ -22,9 +32,9 @@ function App() {
           <Route path='/login'>
             <Login/>
           </Route>
-          <Route render={()=><SignUp />}/>
-          <Redirect from="/" to="/todo"/>
         </Switch>
+
+      }
     </div>
   );
 }

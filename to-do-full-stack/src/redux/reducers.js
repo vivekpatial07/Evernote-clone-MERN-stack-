@@ -71,7 +71,7 @@ const noteReducer = (state = initialNoteState , action ) => {
     }
 }
 const initialAuthState = {
-    isLoggedIn:false
+    userInfo:null
 }
 
 const authReducer = (state=initialAuthState, action) => {
@@ -79,7 +79,7 @@ const authReducer = (state=initialAuthState, action) => {
         case actionTypes.SIGN_UP_SUCCESS:
             return {
                 ...state,
-                isLoggedIn:true
+                userInfo:action.payload
             }
     default:
         return state

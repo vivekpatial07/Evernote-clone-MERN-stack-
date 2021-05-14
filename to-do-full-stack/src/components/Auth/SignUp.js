@@ -4,6 +4,8 @@ import { signUpInitiate } from '../../redux/actionCreator'
 import {useHistory} from 'react-router-dom'
 import {authSelector} from '../../redux/selector'
 const SignUp = () => {
+  const userData = JSON.parse(localStorage.getItem('userInfo'))
+  console.log(userData)
   const [data, setData] = useState({})
   const dispatch = useDispatch()
   const state = useSelector(authSelector)
@@ -18,11 +20,11 @@ const SignUp = () => {
     inputData[e.target.name]=e.target.value
     setData(inputData)
   }
-  useEffect(()=>{
-    if(state.isLoggedIn){
-      // history.push('/task')
-    }
-  },[state])
+  // useEffect(()=>{
+  //   if(userData?.token){
+  //     history.push('/task')
+  //   }
+  // },[state,history])
   return (
     <div>
       <form onSubmit={submitHandler}>
