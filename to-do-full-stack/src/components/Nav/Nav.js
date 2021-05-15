@@ -1,8 +1,13 @@
 import React from 'react'
 import { withRouter } from 'react-router'
 import {Menu} from 'semantic-ui-react'
+import { useDispatch } from 'react-redux'
+import { logoutInitate } from '../../redux/actionCreator'
+import { useHistory } from 'react-router-dom'
 
 function Nav(props) {
+  const dispatch = useDispatch()
+  const history = useHistory()
     return (
         <div style={{zIndex:'200',}}>
             <Menu>
@@ -33,7 +38,14 @@ function Nav(props) {
         >
 
         </Menu.Item> */}
-        
+        <Menu.Item
+          name='Logout'
+          active={props.location.pathname.includes('task')}
+          onClick={()=>{
+            dispatch(logoutInitate(history))
+          }}
+        >
+        </Menu.Item>
         
         </Menu>  
                    

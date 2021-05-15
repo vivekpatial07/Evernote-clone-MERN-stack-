@@ -103,17 +103,30 @@ export const fetchImportantNotesSuccess = (data) => {
     }
 }
 
-export const signUpInitiate = (data) => {
+export const signUpInitiate = (data, redirectTo) => {
     return {
         type:actionTypes.SIGN_UP_INITIATE,
-        payload:data
+        payload:data,
+        redirectTo: redirectTo
     }
 }
 
 export const signUpSuccess = (data) => {
-    console.log('showing')
     return {
         type:actionTypes.SIGN_UP_SUCCESS,
         payload:data
+    }
+}
+
+export const logoutInitate = (redirectTo) => {
+    return {
+        type: actionTypes.LOGOUT_INITIATE,
+        redirectTo: redirectTo
+    }
+}
+
+export const logoutSuccess = () => {
+    return {
+        type: actionTypes.LOGOUT_SUCCESS
     }
 }

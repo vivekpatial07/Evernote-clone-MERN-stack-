@@ -5,24 +5,16 @@ import './App.css'
 import Main from './components/Notes/Main/Main'
 import Nav from './components/Nav/Nav'
 import {Redirect, Route, Switch} from 'react-router-dom'
-import { useEffect } from 'react'
 // import SideNav from './components/Notes/SideNav/SideNav'
 // import AddNoteModal from './components/Notes/AddNoteModal/AddNoteModal'
 // font style to be changed
 function App() {
-  const user = localStorage.getItem('userInfo')
 
   return (
     <div className="App">
-      {/* <Nav/> */}
-      {
-        !user ?
+      <Nav/>
         <Switch>
           <Route path="/signup" component={SignUp}/>
-          <Redirect from="/" to="signup" /> 
-        </Switch>
-        :   
-        <Switch>
           <Route path='/todo'>  
             <AddTodo/>  
           </Route>
@@ -32,9 +24,9 @@ function App() {
           <Route path='/login'>
             <Login/>
           </Route>
+          <Redirect from="/" to="/task" />
         </Switch>
 
-      }
     </div>
   );
 }

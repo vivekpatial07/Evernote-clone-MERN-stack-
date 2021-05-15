@@ -1,3 +1,4 @@
+//faliure types yet to be added when using error handling
 export const FETCH_DATA = 'FETCH_DATA'
 export const ADD_NOTE = 'ADD_NOTE'
 export const SHOW_MODAL = 'SHOW_MODAL'
@@ -16,3 +17,5 @@ export const FETCH_IMPORTANT_NOTES_INIT = 'FETCH_IMPORTANT_NOTES_INIT'
 export const FETCH_IMPORTANT_NOTES_SUCCESS = 'FETCH_IMPORTANT_NOTES_SUCCESS'
 export const SIGN_UP_INITIATE = 'SIGN_UP_INITIATE'
 export const SIGN_UP_SUCCESS = 'SIGN_UP_SUCCESS'
+export const LOGOUT_INITIATE = 'LOGOUT_INITIATE'
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS'
