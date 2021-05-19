@@ -3,51 +3,6 @@ const generateToken  = require('../utils/tokenGenerator')
 const bcrypt = require('bcryptjs')
 const { validationResult } = require('express-validator')
 
-const registerUser = ((req,res)=>{    
-    const {username,email,password} = req.body
-    User.exists({ email }).then((response)=>{
-        if (response) {
-            return res.status(400).json('User already exists')
-        }
-        const user = new User({
-            username,
-            email,
-            password
-        })
-       
-        if(user){
-            user.save().then(()=>
-            res.status(201).json({
-                _id:user._id,
-                username: user.username,
-                email: user.email,
-                // isAdmin:` user.isAdmin,
-                token:null
-            }))
-        }
-        else {
-        res.status(400).json('Invalid user data')
-      }
-    })
-  
-})
-const authUser =  ((req,res)=>{
-  const { email, password } = req.body
-//   User.findOne({ email }).then(async(usr)=>{
-//       console.log(usr)
-//       let pass  =  await usr.matchPassword(password)
-//         console.log(pass)
-//       if(pass){
-//           console.log('yess')
-//       }
-
-//   })
-    User.findOne({email}).then(usr=>{
-        if(usr&&password===usr.password){
-            
-        }
-    })
-})
 
 const login = async (req, res) => {
     const errors = validationResult(req);
@@ -101,6 +56,7 @@ const login = async (req, res) => {
     }
   }
 
+
 const signup = async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -148,8 +104,6 @@ const signup = async (req, res) => {
     }
 } 
 module.exports = {
-    registerUser,
-    authUser,
     login,
     signup
 }

@@ -40,12 +40,24 @@ export function* editNoteSaga(data) {
 }
 
 export function* saveNoteSaga(data) {
+    
     const note = yield data.payload
-    yield axios.post("http://localhost:7777/task",note).then((res)=>{
+    const user = yield JSON.parse(localStorage.getItem('userInfo'))
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user.token}`,
+      },
+    }
+    yield axios.post("http://localhost:7777/task", note, config).then((res)=>{
         console.log(res)
+        console.log('hinot')
+
     }).catch((err)=>{
         console.log(err)
+        console.log('hi')
     })
+    console.log('su[p')
 }
 
 export function* starUnstarSaga(data) {
