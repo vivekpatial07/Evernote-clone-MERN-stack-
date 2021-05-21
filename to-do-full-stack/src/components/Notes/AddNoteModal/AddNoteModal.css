@@ -1,52 +1,55 @@
 .notes-modal{
-    width:100vw;
+	width:100vw;
 }
 
 .ql-editor{
-    min-height: 700px ;
-    overflow: auto;
-    /* padding: 27px auto !important; */
-  }
-.ql-editor h1 {
-    margin: 0 0 27px 0 !important;
+	min-height: 700px ;
+	overflow: auto;
+	/* padding: 27px auto !important; */
 }
+
+.ql-editor h1 {
+	margin: 0 0 27px 0 !important;
+}
+
 .ql-toolbar{
-    display: flex;
+	display: flex;
 }
 
 .header-input{
-    border-color: #ffeb82;
-    height: 61px;
-    font-size: 40px;
-    vertical-align: middle;
-    border:none;
-    resize: none;
-    /* width: 81% !important; */
-    padding: 0 20px;
-    font-weight:100;
-    color: gray;
-    line-height: 61px;
+	border-color: #ffeb82;
+	height: 61px;
+	font-size: 40px;
+	vertical-align: middle;
+	border:none;
+	resize: none;
+	padding: 0 20px;
+	font-weight:100;
+	color: gray;
+	line-height: 61px;
 }
+
 .header-input:focus{
-    outline: none;
+	outline: none;
 }
+
 .header-input::placeholder{
-    font-weight: 100;
-    color: #D3D3D3;
-    vertical-align: middle;
-
-
+	font-weight: 100;
+	color: #D3D3D3;
+	vertical-align: middle;
 }
+
 .top-bar{
-    display: flex;
-    width: 1330px;
-    background-color: #FFFFFF;
-    justify-content: space-between;
+	display: flex;
+	width: 1330px;
+	background-color: #FFFFFF;
+	justify-content: space-between;
 }
+
 .header-icon{
-    height: 61px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #FFFFFF;
+	height: 61px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	background-color: #FFFFFF;
 }

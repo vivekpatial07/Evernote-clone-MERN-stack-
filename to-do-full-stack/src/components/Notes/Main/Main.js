@@ -11,39 +11,33 @@ import {storeNotes} from '../../../redux/actionCreator'
 import { withRouter } from 'react-router-dom'
 import ReactLoader from '../../Loader/ReactLoader'
 function Main(props) {
-    const state = useSelector(noteSelector)
-    const auth = useSelector(authSelector)
-    const dispatch = useDispatch()
-    const [allNotes,setAllNotes] = useState([])
-    console.log('fasdlk')
-    // const fetchFromDb = async() =>{
-    //     const res = await axios.get('http://localhost:7777/task')
-    //     console.log(res)
-    //     console.log(res.data)
-    //     setAllNotes(res.data)
-    //     // store notes in redux store
-    //     dispatch(storeNotes(res.data))
-    // }
-    // useEffect(()=>{
-    //     // will use redux saga after this
-    //     fetchFromDb()
-    // },[])
-    return (
-        <div>
-            {auth.loading ? <ReactLoader /> :
-            <div style={{display:"flex", flexDirection:'row',height:"100vh"}}>
-                <div>
-                <SideNav/>
-                </div>
-                {
-                   state.showModal 
-                    ||props.location.pathname.includes('task/')?
-                    <AddNoteModal/>:<NotesContainer notes={allNotes}/>
-                }
-            </div>
-}
-        </div>
-    )
+
+	const state = useSelector(noteSelector)
+	const auth = useSelector(authSelector)
+	const dispatch = useDispatch()
+	const [allNotes,setAllNotes] = useState([])
+   
+	return (
+		<div>
+			{
+				auth.loading
+					? (
+					<ReactLoader /> 
+					)	:	(
+					<div style={{display:"flex", flexDirection:'row',height:"100vh"}}>
+						<div>
+							<SideNav/>
+						</div>
+						{
+							state.showModal 
+							||props.location.pathname.includes('task/')?
+							<AddNoteModal/>:<NotesContainer notes={allNotes}/>
+						}
+				</div>
+				)
+			}
+		</div>
+  )
 }
 
 export default withRouter(Main)

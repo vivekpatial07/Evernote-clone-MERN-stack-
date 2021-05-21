@@ -1,76 +1,80 @@
 .notes-container{
-    height: 500px;
-    box-shadow: 2px 2px 2px 2px #ccc;
-    width: 1200px;
-    display: flex;
-    overflow-x: auto;
-    border-radius: 7px;
-    z-index: 100;
-    margin:10px;
-    position:relative;
-    top: 100px;
-    background: rgb(90,180,251);
-    background: linear-gradient(169deg, rgba(90,180,251,1) 0%, rgba(50,127,242,1) 100%);    
+	height: 500px;
+	box-shadow: 2px 2px 2px 2px #ccc;
+	width: 1200px;
+	display: flex;
+	overflow-x: auto;
+	border-radius: 7px;
+	z-index: 100;
+	margin:10px;
+	position:relative;
+	top: 100px;
+	background: rgb(90,180,251);
+	background: linear-gradient(169deg, rgba(90,180,251,1) 0%, rgba(50,127,242,1) 100%);    
 }
 
 .notes-container::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+	display: none;  /* Safari and Chrome */
 }
 
 .single-note{
-    height: 250px;
-    padding: 10px;
-    margin: auto 10px;
-    box-shadow: 0px 0px 1px 1px #696969;
-    border-radius: 8px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
-    min-width: 300px;
-    transition: transform .2s;
-    background: rgba( 255, 255, 255, 0.45 );
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-    backdrop-filter: blur( 4px );
-    -webkit-backdrop-filter: blur( 4px );
-    border-radius: 10px;
-    border: 1px solid rgba( 255, 255, 255, 0.18 );
+	height: 250px;
+	padding: 10px;
+	margin: auto 10px;
+	box-shadow: 0px 0px 1px 1px #696969;
+	border-radius: 8px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	min-width: 300px;
+	transition: transform .2s;
+	background: rgba( 255, 255, 255, 0.45 );
+	box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+	backdrop-filter: blur( 4px );
+	-webkit-backdrop-filter: blur( 4px );
+	border-radius: 10px;
+	border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
+
 .single-note:hover{
-    transform: scale(1.1); 
-    cursor: pointer !important;
+	transform: scale(1.1); 
+	cursor: pointer !important;
 }
 
 .container-right{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
+	display:flex;
+	flex-direction:column;
+	align-items:flex-start;
 }
+
 .notes-heading{
-    height: 400px;
-    width:100%;
-    font-size: 24px;
-    font-weight: 700;
-    background-color: #333333;
-    position: absolute;
+	height: 400px;
+	width:100%;
+	font-size: 24px;
+	font-weight: 700;
+	background-color: #333333;
+	position: absolute;
 }
 .notes-heading img{
-    width: 100%;
-    height: 400px;
+	width: 100%;
+	height: 400px;
 }
+
 .text-area .ql-editor {
-    min-height: 100px;    
+	min-height: 100px;    
 }
+
 .text-area .ql-editor > *{
-     cursor: pointer !important;
+		cursor: pointer !important;
 }
 
 /*  
-    can be used to hide the toolbar with normal theme
-    right now using core theme with no toolbar for that
+	can be used to hide the toolbar with normal theme
+	right now using core theme with no toolbar for that
 */
 /* .containerQuill .ql-toolbar {
-    opacity: 0;
-    height: 0;
-    width: 0;
+	opacity: 0;
+	height: 0;
+	width: 0;
 } */

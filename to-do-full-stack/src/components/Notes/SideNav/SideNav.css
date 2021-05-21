@@ -1,74 +1,74 @@
 .sideNav{
-    width: 270px;
-    height: 100vh;
-    background: #d0e1fc;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgb(46,158,247);
-    background: linear-gradient(90deg, rgba(50,127,242,1) 0%, rgba(46,158,247,1) 100%);
+	width: 270px;
+	height: 100vh;
+	background: #d0e1fc;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background: rgb(46,158,247);
+	background: linear-gradient(90deg, rgba(50,127,242,1) 0%, rgba(46,158,247,1) 100%);
 }
 
 /* add glassmorphism */
 
 .sidenotes{
-    height: 40px;
-    /* margin: 7px; */
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    /* color: #8898b2 */
+	height: 40px;
+	/* margin: 7px; */
+	width: 100%;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	/* color: #8898b2 */
 }
 
 .sidenotes:hover{
-    background-color:#E0E1E2;
-    cursor: pointer;
+	background-color:#E0E1E2;
+	cursor: pointer;
 }
 
 .activenote {
-    background-color:#E0E1E2;
-    color: rgba(0,0,0,.6);
+	background-color:#E0E1E2;
+	color: rgba(0,0,0,.6);
 }
 
 .sidenote-container{
-    height: 500px;
-    width: 100%;
-    overflow: auto;
-    margin: 10px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	height: 500px;
+	width: 100%;
+	overflow: auto;
+	margin: 10px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .ui.attached.menu {
-    margin: 0 auto !important;
-    width:200px;
-    text-align: center !important
+	margin: 0 auto !important;
+	width:200px;
+	text-align: center !important
 }
 .ui.tabular.menu{
-    border: none !important;
+	border: none !important;
 }
 
 .TabWrapper .segment {
-    width: 270px !important;
-    height: 430px !important;
+	width: 270px !important;
+	height: 430px !important;
 }
 .TabWrapper .ui.segment{
-    background-color: transparent !important;
-    border: none;
-    padding: 0 1rem !important;
+	background-color: transparent !important;
+	border: none;
+	padding: 0 1rem !important;
 }
 
 .TabWrapper .ui.attached.tabular.menu {
-    width: 150px !important;
+	width: 150px !important;
 }
 
 .sidenav-header {
-    font-size: 24px;
+	font-size: 24px;
 }
 
 .sidenav-header:hover{
-    cursor: pointer;
+	cursor: pointer;
 }

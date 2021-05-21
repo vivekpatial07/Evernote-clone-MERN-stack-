@@ -20,7 +20,6 @@ function App() {
           <Route path='/todo'>  
             <AddTodo/>  
           </Route>
-          {/* make it a private route using hoc */}
           <ProtectedRoute path='/task' component={Main}/>
           <Route path='/login'>
             <Login/>

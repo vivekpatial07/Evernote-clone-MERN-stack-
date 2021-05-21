@@ -12,6 +12,8 @@ import {
   signUpSaga,
   logoutSaga
 } from './authSaga'
+
+
 export default function* watcherSaga() {
   // ----------------------- NOTES--------------------------------------- //
     yield takeLatest(actionTypes.FETCH_NOTES, fetchNotesSaga)

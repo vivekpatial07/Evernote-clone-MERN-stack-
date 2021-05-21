@@ -14,99 +14,105 @@ import {Tab} from 'semantic-ui-react'
 //or maybe use sockets or watch evernote clone tutorial or maybe just use redux tutorial
 
 function SideNav(props) {
-    const [notes,setnotes] = useState()
-    const [todos,settodos] = useState()
-    const dispatch = useDispatch()
-    const showNoteModal = () => {
-        dispatch(showModal(true))
-        const id = uuidv4()
-        props.history.push(`/task/${id}`)
-    }
-    const fetchFromDb = async() => {
-        const res = await axios.get('http://localhost:7777/task')
-        // console.log(res.data)
-        setnotes(res.data)
-    }
-    const fetchTodoFromDb = async() => {
-        axios.get('http://localhost:7777/todo').then(res=>{
-        settodos(res.data)
-        console.log(res.data)
-    }).catch(err=>{
-		console.log(err)
-		})
-    }
-    useEffect(() => {
-        fetchFromDb()
-        fetchTodoFromDb()
-    },[])
 
-    useEffect(() => {
-        if(!props.location.pathname.includes('edit')){
-            dispatch(showModal(false))
-        }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[props.location.pathname])
-    //use loading prop inside tab.pane
-    const sideTodo = todos?.map(todo=>{
-        return (<div 
-            key={uuidv4()}
-            className={props.location.pathname.includes(todo._id)
-                ?"sidenotes activenote"
-                : "sidenotes"}
-            
-            // onClick={()=>{props.history.push(`/task/${todo._id}/edit`)}}
-            >
-            <span style={{marginLeft:"14px"}}>
-            <Icon name="pencil alternate" />
-            {todo.task}
-            </span>
-        </div>
-        )
-    }) 
-   
-    const panes = [
-        {
-            menuItem: 'Notes',
-            render: () => <Tab.Pane attached={false}>{sidenotes}</Tab.Pane>
-        },
-        {
-            menuItem: 'Todos',
-            render: () => <Tab.Pane attached={false}>{sideTodo}</Tab.Pane>
-        }
-    ]
-    const sidenotes = notes?.map(note=>{
-        return(  
-            <div 
-            key={uuidv4()}
-            className={props.location.pathname.includes(note._id)
-                ?"sidenotes activenote"
-                : "sidenotes"}
-            
-            onClick={()=>{props.history.push(`/task/${note._id}/edit`)}}
-            >
-            <span style={{marginLeft:"14px"}}>
-            <Icon name="pencil alternate" />
-            {note.title}
-            </span>
-            {note.noteType==="important"&&<span><Icon name="star"/></span>}
-        </div>
-        )
-    })
-    return (
-        <div className='sideNav'>
-            <p
-                onClick={()=>{props.history.push('/task')}}
-                className="sidenav-header"
-                style={{fontSize:'27px'}}>
-            NeverNote
-            </p>
-            <Button  onClick={showNoteModal}>Add Note</Button>
-           <div className="TabWrapper" style={{marginTop:"27px ",width:"270px"}}>
-               <Tab panes={panes}/>
-               </div> 
-           {/* <div className="sidenote-container">{}
-            </div> */}
-        </div>
-    )
+	const [notes,setnotes] = useState()
+	const [todos,settodos] = useState()
+	const dispatch = useDispatch()
+
+	const showNoteModal = () => {
+		dispatch(showModal(true))
+		const id = uuidv4()
+		props.history.push(`/task/${id}`)
+	}
+
+	const fetchFromDb = async() => {
+		const res = await axios.get('http://localhost:7777/task')
+		setnotes(res.data)
+	}
+
+	const fetchTodoFromDb = async() => {
+		axios.get('http://localhost:7777/todo').then(res=>{
+			settodos(res.data)
+		}).catch(err=>{
+			console.log(err)
+		})
+	}
+
+	useEffect(() => {
+		fetchFromDb()
+		fetchTodoFromDb()
+	},[])
+
+	useEffect(() => {
+			if(!props.location.pathname.includes('edit')){
+					dispatch(showModal(false))
+			}
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[props.location.pathname])
+
+	//use loading prop inside tab.pane
+	const sideTodo = todos?.map(todo=>{
+		return (
+			<div 
+				key={uuidv4()}
+				className={props.location.pathname.includes(todo._id)
+					?"sidenotes activenote"
+					: "sidenotes"}
+				// onClick={()=>{props.history.push(`/task/${todo._id}/edit`)}}
+				>
+					<span style={{marginLeft:"14px"}}>
+					<Icon name="pencil alternate" />
+					{todo.task}
+					</span>
+			</div>
+		)
+	}) 
+
+	const panes = [
+		{
+			menuItem: 'Notes',
+			render: () => <Tab.Pane attached={false}>{sidenotes}</Tab.Pane>
+		},
+		{
+			menuItem: 'Todos',
+			render: () => <Tab.Pane attached={false}>{sideTodo}</Tab.Pane>
+		}
+	]
+
+	const sidenotes = notes?.map(note=>{
+		return(  
+			<div 
+				key={uuidv4()}
+				className={props.location.pathname.includes(note._id)
+					?"sidenotes activenote"
+					: "sidenotes"}
+				onClick={()=>{props.history.push(`/task/${note._id}/edit`)}}
+			>
+				<span style={{marginLeft:"14px"}}>
+				<Icon name="pencil alternate" />
+				{note.title}
+				</span>
+				{note.noteType==="important"&&<span><Icon name="star"/></span>}
+			</div>
+		)
+	})
+
+	return (
+		<div className='sideNav'>
+			<p
+				onClick={()=>{props.history.push('/task')}}
+				className="sidenav-header"
+				style={{fontSize:'27px'}}>
+			NeverNote
+			</p>
+			<Button  onClick={showNoteModal}>Add Note</Button>
+			<div className="TabWrapper" style={{marginTop:"27px ",width:"270px"}}>
+				<Tab panes={panes}/>
+				</div> 
+			{/* <div className="sidenote-container">{}
+			</div> */}
+		</div>
+	)
 }
+
 export default withRouter(SideNav)

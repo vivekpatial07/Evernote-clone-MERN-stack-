@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux'
 import { signUpInitiate } from '../../redux/actionCreator'
 
 const SignUp = ({ history }) => {
+  
   const [data, setData] = useState({})
   const dispatch = useDispatch()
   
