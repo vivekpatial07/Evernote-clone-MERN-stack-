@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken')
 const { check } = require('express-validator')
 const User = require('../models/userModel/userModel')
+
+
 const checkValidation = (req, res, next ) =>  {
   return [//add this check in route middleware and then put it in a controller function
   // check("username", "Please Enter a Valid Username")

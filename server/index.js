@@ -22,6 +22,7 @@ connection.once('open', (err)=>{
     console.log(`MongoDB connected successfully`)
 })
 
+//todo routes
 const addTodoRouter = require('./routes/todoRoutes/add')
 const deleteTodoRouter = require('./routes/todoRoutes/delete')
 const updateTodoRouter = require('./routes/todoRoutes/edit')
@@ -29,11 +30,11 @@ app.use('/',deleteTodoRouter)
 app.use('/',updateTodoRouter)
 app.use('/', addTodoRouter)
 
+//note routes
 const addNoteRouter = require('./routes/noteRoutes/addnote')
 app.use('/',addNoteRouter)
 
-const signupRouter = require('./routes/authRoutes/signUp')
-const loginRouter = require('./routes/authRoutes/login')
+//auth routes
 const authRouter = require('./routes/authRoutes/userRoutes')
 app.use('/',signupRouter)
 app.use('/',loginRouter)

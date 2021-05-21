@@ -1,5 +1,4 @@
 const router = require('express').Router()
-let Note = require('../../models/noteModel/noteSchema')
 const {
     editNote,
     getAllNotes,
@@ -9,15 +8,19 @@ const {
 } = require('../../controllers/notesController')
 const { protect } = require('../../middlewares/authmiddleware')
 
+//get all notes
 router.route('/task').get(getAllNotes)
 
+//get important notes
 router.route('/task/important').get(getImportantNotes)
- 
 
+// add note
 router.post('/task', protect, addNote)
 
+//edit note
 router.put('/task/:id/edit', editNote)
 
+//get single note
 router.route('/task/:id').get(getSingleNote)
 
 module.exports = router
