@@ -1,4 +1,5 @@
 let Note = require('../models/noteModel/noteSchema')
+const User = require('../models/userModel/userModel')
 
 const editNote = (req,res)=>{
   if(req.body.noteType==="important"){
@@ -32,7 +33,7 @@ const editNote = (req,res)=>{
 }
 
 const addNote = (req,res)=>{
-  Note.findById(req.body._id,(err,data)=>{
+  Note.findById(req.body._id, async(err,data)=>{
       if(!data){
           const note = new Note({
               mainNote: req.body.mainNote||"PLEASE WRITE SOMETHING`",
@@ -40,17 +41,35 @@ const addNote = (req,res)=>{
               _id: req.body._id,
               user: req.user
           })
-          note.save().then(()=>res.json('note added'))
-          .catch (err=>res.status(400).json(`Error ${err}`))
-      }
-      else{
+          const updatedNote = await note.save()
+          const  noteId = updatedNote._id
+          console.log(noteId)
+          let updatedUser = {}
+          const user = await User.findById(req.user)
+          user.notes.push(note._id)
+        //   console.log(user)
+        user.save().then(()=>{
+            console.log('user saved')
+        }).catch((error)=>{
+            console.log(error,'eror is tis')
+        })
+    } else{
+          //dont use new use edit method which is commented
           const note = new Note({
               mainNote: req.body.mainNote||"PLEASE WRITE SOMETHING`",
               title: req.body.title||'title', //validation to be added if something is emplty show toaster or just save with common text like this
-              _id: req.body._id
-          })
-          console.log(note,'hii2')
+              _id: req.body._id,
+              user: req.user
 
+          })
+          console.log('hii2')
+          const user = User.findById(req.user)
+        //     user.notes.push(note)
+        //   user.save().then(()=>{
+        //     console.log('user saved')
+        // }).catch((error)=>{
+        //     console.log(error,'eror is tis')
+        // })
         //   Note.findByIdAndUpdate(req.body._id, note,(err,data)=>{
         //       res.status(200).json('Edited Sucessfully')
         //   })

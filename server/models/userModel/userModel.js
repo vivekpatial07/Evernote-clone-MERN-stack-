@@ -19,13 +19,10 @@ const UserSchema = new mongoose.Schema({
   },
   notes: [
     {
-     note:  {
-      type: mongoose.Schema.Types.ObjectId,
-      mainNote: {type: String},
-      title: {type: String},
+      type: String,
       required: true,
       ref: "Note"
-    }
+  
     }
   ],
   createdAt: {
