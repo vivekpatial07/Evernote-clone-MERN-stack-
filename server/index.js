@@ -36,8 +36,6 @@ app.use('/',addNoteRouter)
 
 //auth routes
 const authRouter = require('./routes/authRoutes/userRoutes')
-app.use('/',signupRouter)
-app.use('/',loginRouter)
 app.use('/',authRouter)
 
 app.listen(port,()=>{
