@@ -1,9 +1,10 @@
 import React from 'react'
 import { withRouter } from 'react-router'
-import {Menu} from 'semantic-ui-react'
+import { Menu, Dropdown } from 'semantic-ui-react'
 import { useDispatch } from 'react-redux'
 import { logoutInitate } from '../../redux/actionCreator'
 import { useHistory } from 'react-router-dom'
+import './Nav.css'
 
 function Nav(props) {
 
@@ -12,7 +13,7 @@ function Nav(props) {
     
   return (
     <div style={{zIndex:'200',}}>
-      <Menu>
+      <Menu  secondary compact={/*if user if mobile then true but right now*/false}>
         <Menu.Item
           name='Todo'
           active={props.location.pathname.includes('todo')}
@@ -36,13 +37,24 @@ function Nav(props) {
     >
 
     </Menu.Item> */}
-          <Menu.Item
+          {/* <Menu.Item
+            position='right'
             name='Logout'
             active={props.location.pathname.includes('task')}
             onClick={()=>{
               dispatch(logoutInitate(history))
             }}
-          />
+          /> */}
+        <Menu.Menu position="right">
+          <Dropdown item icon='user' simple>
+            <Dropdown.Menu>
+              <Dropdown.Item onClick={()=>{alert('profile clicked')}}>Profile</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{dispatch(logoutInitate(history))}}>
+                Logout
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        </Menu.Menu>
       </Menu>  
                 
     </div>

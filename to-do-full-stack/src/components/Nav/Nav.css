@@ -1,0 +1,31 @@
+.ui.secondary.menu {
+  background: rgb(216,109,42) !important;
+}
+
+.ui.secondary.menu .active.item {
+  background: #373c40 !important;
+}
+
+.ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
+  background: #373c40 !important;
+}
+
+
+
+.ui.secondary.menu {
+  background: #373c40 !important;
+  }
+
+.ui.secondary.menu .active.item {
+  background: rgb(216,109,42) !important;
+  background: radial-gradient(circle, rgba(216,109,42,1) 0%, rgba(213,108,47,1) 100%) !important;
+  color: black !important;
+}
+
+.ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
+  background: rgb(216,109,42) !important;
+}
+
+.ui.secondary.menu .item {
+  color: white !important;
+}

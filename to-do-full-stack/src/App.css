@@ -7,3 +7,17 @@ background: linear-gradient(90deg, rgba(46,158,247,1) 0%, rgba(50,127,242,1) 100
 *{
   box-sizing: border-box;
 }
+.ui.tabular.menu .active.item {
+  background: rgb(216,109,42) !important;
+  background: radial-gradient(circle, rgba(216,109,42,1) 0%, rgba(213,108,47,1) 100%) !important;
+  /* border: 2px solid rgb(216,109,42) !important; */
+  border: none !important;
+  color: black !important;
+
+}
+
+.ui.tabular.menu .item {
+  border-bottom: 1px solid rgb(216,109,42) !important;
+  border-radius: 10px !important;
+  color: white !important;
+}
