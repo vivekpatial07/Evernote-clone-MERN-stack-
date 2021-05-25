@@ -14,7 +14,7 @@ import {Tab} from 'semantic-ui-react'
 //or maybe use sockets or watch evernote clone tutorial or maybe just use redux tutorial
 
 function SideNav(props) {
-
+	const [showSideBar, setShowSideBar] = useState(false)
 	const [notes,setnotes] = useState()
 	const [todos,settodos] = useState()
 	const dispatch = useDispatch()
@@ -96,22 +96,30 @@ function SideNav(props) {
 			</div>
 		)
 	})
-
-	return (
+	const sideBar = (
 		<div className='sideNav'>
-			<p
-				onClick={()=>{props.history.push('/task')}}
-				className="sidenav-header"
-				style={{fontSize:'27px'}}>
-			NeverNote
-			</p>
-			<Button  onClick={showNoteModal}>Add Note</Button>
-			<div className="TabWrapper" style={{marginTop:"27px ",width:"270px"}}>
-				<Tab panes={panes}/>
-				</div> 
-			{/* <div className="sidenote-container">{}
-			</div> */}
-		</div>
+			<Icon name="arrow left" onClick={() => setShowSideBar(false)}/>
+		<p
+			onClick={()=>{props.history.push('/task')}}
+			className="sidenav-header"
+			style={{fontSize:'27px'}}>
+		NeverNote
+		</p>
+		<Button  onClick={showNoteModal}>Add Note</Button>
+		<div className="TabWrapper" style={{marginTop:"27px ",width:"270px"}}>
+			<Tab panes={panes}/>
+			</div> 
+	</div>
+
+	)
+	return (
+		showSideBar
+			? sideBar
+			: (
+				<div className="arrowContainer" onClick={() => setShowSideBar(true)}>
+					<Icon name="arrow right"/>
+				</div>
+			)
 	)
 }
 
