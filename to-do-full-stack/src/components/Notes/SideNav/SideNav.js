@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useState, useRef, useLayoutEffect } from 'react'
 import './SideNav.css'
 import {useDispatch} from 'react-redux'
 import {showModal} from '../../../redux/actionCreator'
@@ -14,11 +14,13 @@ import {Tab} from 'semantic-ui-react'
 //or maybe use sockets or watch evernote clone tutorial or maybe just use redux tutorial
 
 function SideNav(props) {
-	const [showSideBar, setShowSideBar] = useState(false)
+	const [visible, setVisible] = useState(true)
 	const [notes,setnotes] = useState()
 	const [todos,settodos] = useState()
-	const dispatch = useDispatch()
+	const [sideNavclass, setClass] = useState('')
 
+	const dispatch = useDispatch()
+	const sideBarRef = useRef(null)
 	const showNoteModal = () => {
 		dispatch(showModal(true))
 		const id = uuidv4()
@@ -49,6 +51,19 @@ function SideNav(props) {
 			}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[props.location.pathname])
+
+	
+	const sideBarShowHandler = () => {
+		sideBarRef.current.style.width = "270px"
+		sideBarRef.current.style.display = "flex"
+		setVisible(false)
+	}
+
+	const hideSideBarHandler = () => {
+		sideBarRef.current.style.width = "0"
+		// sideBarRef.current.style.display = "none"
+		setVisible(true)
+	}
 
 	//use loading prop inside tab.pane
 	const sideTodo = todos?.map(todo=>{
@@ -96,9 +111,10 @@ function SideNav(props) {
 			</div>
 		)
 	})
+
 	const sideBar = (
-		<div className='sideNav'>
-			<Icon name="arrow left" onClick={() => setShowSideBar(false)}/>
+		<div className="sideNav" ref={sideBarRef}>
+			<Icon name="arrow left" onClick={hideSideBarHandler}/>
 		<p
 			onClick={()=>{props.history.push('/task')}}
 			className="sidenav-header"
@@ -110,16 +126,17 @@ function SideNav(props) {
 			<Tab panes={panes}/>
 			</div> 
 	</div>
-
 	)
+
 	return (
-		showSideBar
-			? sideBar
-			: (
-				<div className="arrowContainer" onClick={() => setShowSideBar(true)}>
+		<>
+			{ sideBar}
+			{visible && 
+				<div className="arrowContainer" onClick={() => sideBarShowHandler()}>
 					<Icon name="arrow right"/>
 				</div>
-			)
+			}
+		</>
 	)
 }
 
