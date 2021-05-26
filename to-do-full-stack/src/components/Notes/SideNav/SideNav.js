@@ -1,8 +1,8 @@
-import React, { useEffect,useState, useRef, useLayoutEffect } from 'react'
+import React, { useEffect,useState, useRef } from 'react'
 import './SideNav.css'
 import {useDispatch} from 'react-redux'
 import {showModal} from '../../../redux/actionCreator'
-import { Button } from 'semantic-ui-react'
+import AddNoteButton from '../../AddNoteButton/AddNoteButton'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 import {Icon} from 'semantic-ui-react'
@@ -114,17 +114,19 @@ function SideNav(props) {
 
 	const sideBar = (
 		<div className="sideNav" ref={sideBarRef}>
-			<Icon name="arrow left" onClick={hideSideBarHandler}/>
 		<p
 			onClick={()=>{props.history.push('/task')}}
 			className="sidenav-header"
 			style={{fontSize:'27px'}}>
 		NeverNote
 		</p>
-		<Button  onClick={showNoteModal}>Add Note</Button>
+		<AddNoteButton  onClick={showNoteModal}>Add Note</AddNoteButton>
 		<div className="TabWrapper" style={{marginTop:"27px ",width:"270px"}}>
 			<Tab panes={panes}/>
-			</div> 
+			</div>
+			<div className="leftArrow"  onClick={hideSideBarHandler}>
+				<Icon name="arrow left"/>
+			</div>
 	</div>
 	)
 

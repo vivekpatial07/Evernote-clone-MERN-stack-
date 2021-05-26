@@ -7,7 +7,7 @@
 	flex-direction: column;
 	align-items: center;
 	background: #373c40;
-	transition: 1.4s;
+	transition: .4s;
 }
 
 /* add glassmorphism */
@@ -15,6 +15,8 @@
 .sidenotes{
 	height: 40px;
 	/* margin: 7px; */
+	font-size: 16px;
+	font-weight: 500;
 	width: 100%;
 	padding: 10px;
 	display: flex;
@@ -23,8 +25,8 @@
 }
 
 .sidenotes:hover{
-	background-color:#E0E1E2;
 	cursor: pointer;
+	background: rgba(213,108,47,1); 
 }
 
 .activenote {
@@ -56,12 +58,28 @@
 	justify-content: center;
 	color: white;
 	width: 50px;
-	transition: width 1s;
+	transition: width .2s;
 }
 
 .arrowContainer:hover {
-	/* transform: scaleX(); */
+	cursor: pointer;
 	width: 100px;
+}
+
+.leftArrow {
+	height: 50px;
+	width: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(213,108,47,1);
+	color: black;
+	box-shadow: 1px 1px 2px 1px rgb(216,109,42);
+	margin-left: 214px;
+}
+
+.leftArrow {
+	cursor: pointer;
 }
 
 .ui.attached.menu {
@@ -75,7 +93,7 @@
 
 .TabWrapper .segment {
 	width: 270px !important;
-	height: 430px !important;
+	height: 400px !important;
 }
 .TabWrapper .ui.segment{
 	background-color: transparent !important;
@@ -88,8 +106,10 @@
 }
 
 .sidenav-header {
+	margin-top: 10px !important;
 	font-size: 24px;
 	color: white;
+	font-family: 'Dancing Script', cursive;
 }
 
 .sidenav-header:hover{

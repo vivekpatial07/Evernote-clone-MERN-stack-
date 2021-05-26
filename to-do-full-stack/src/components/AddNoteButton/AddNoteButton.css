@@ -1,0 +1,14 @@
+.curvyButton {
+  height: 40px;
+  width: 100px;
+  border:none;
+  border-radius: 20px;
+	background: rgba(213,108,47,1);
+  box-shadow: 1px 1px rgba(213,108,47,1);
+}
+
+.curvyButton:hover {
+  cursor: pointer;
+	background: rgb(221, 121, 64);
+
+}
