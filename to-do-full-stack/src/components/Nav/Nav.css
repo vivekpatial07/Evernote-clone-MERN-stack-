@@ -1,21 +1,21 @@
 .ui.secondary.menu {
-  background: rgb(216,109,42) !important;
-}
-
-.ui.secondary.menu .active.item {
+  margin-bottom: 2px !important;
   background: #373c40 !important;
+  box-shadow: 0 0 7px 5px black !important;
 }
 
 .ui.secondary.menu .dropdown.item:hover, .ui.secondary.menu .link.item:hover, .ui.secondary.menu a.item:hover {
   background: #373c40 !important;
 }
 
+.ui.menu .item>i.dropdown.icon {
+  margin: 0 10px 0 0 !important;
+}
 
-
-.ui.secondary.menu {
-  background: #373c40 !important;
-  }
-
+div .ui.active.visible.item.dropdown {
+  border: none !important;
+  color: rgb(216,109,42) !important;
+}
 .ui.secondary.menu .active.item {
   border-bottom: 4px solid rgb(216,109,42) !important;
   /* border-bottom: 2px solid radial-gradient(circle, rgba(216,109,42,1) 0%, rgba(213,108,47,1) 100%) !important; */

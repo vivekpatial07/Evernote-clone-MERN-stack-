@@ -46,9 +46,11 @@ function Nav(props) {
             }}
           /> */}
         <Menu.Menu position="right">
-          <Dropdown item icon='user' simple>
+          <Dropdown item icon='dropdown'>
             <Dropdown.Menu>
-              <Dropdown.Item onClick={()=>{alert('profile clicked')}}>Profile</Dropdown.Item>
+              <Dropdown.Item onClick={()=>{alert('profile clicked')}}>
+                Profile
+              </Dropdown.Item>
               <Dropdown.Item onClick={()=>{dispatch(logoutInitate(history))}}>
                 Logout
               </Dropdown.Item>
