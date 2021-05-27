@@ -70,6 +70,10 @@
 		cursor: pointer !important;
 }
 
+.ui.inverted.dimmer {
+	background: #373c40 !important;
+	border: none !important;
+}
 /*  
 	can be used to hide the toolbar with normal theme
 	right now using core theme with no toolbar for that
@@ -79,3 +83,12 @@
 	height: 0;
 	width: 0;
 } */
+
+.container-right .ui.segment>.ui.dimmer {
+	background: #373c40;
+	width: 1200px;
+}
+
+.container-right .ui.inverted.dimmer .ui.loader:after {
+	border-color: #fff transparent transparent;
+}

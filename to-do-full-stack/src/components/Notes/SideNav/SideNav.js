@@ -107,7 +107,7 @@ function SideNav(props) {
 				<Icon name="pencil alternate" />
 				{note.title}
 				</span>
-				{note.noteType==="important"&&<span><Icon name="star"/></span>}
+				{note.noteType==="important"&&<span className="starIcon"><Icon name="star"/></span>}
 			</div>
 		)
 	})

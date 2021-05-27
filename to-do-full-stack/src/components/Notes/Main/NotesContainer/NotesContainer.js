@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import './NotesContainer.css'
 import {useDispatch, useSelector} from 'react-redux'
-import { AnimatePresence, motion } from "framer-motion";
-import ScratchPad from '../../ScratchPad/ScratchPad';
+import { AnimatePresence } from "framer-motion";
+// import ScratchPad from '../../ScratchPad/ScratchPad';
 import { withRouter } from 'react-router';
 // import { removeHTMLTags } from '../../helpers/helpers';
 import ReactQuill from 'react-quill';
@@ -76,27 +76,28 @@ function NotesContainer({notes, history}) {
 			{/* <div className="notes-heading"> */}
 			{/* <img src={IMG} alt="pc"/> */}
 			{/* </div> */}
-			{state.notesLoader?<ReactLoader />:
+			{/* {state.notesLoader?<ReactLoader />: */}
 			<div
 				animate={{scale:1}}
 				initial={{scale:0.7}}
 				transition={{duration:0.7}}
 				className="notes-container">
+					{state.notesLoader ? <ReactLoader /> :
 					<MainTab
-						firstTabName="All Notes"
-						secondTabName="Important Notes"
-						firstChild={data.length===0
-							?<p style={{margin:"auto"}}>Add Notes</p>
-							:<AnimatePresence>{data}</AnimatePresence>
-						}
-						secondChild={importantData===0
-							?<p style={{margin:'auto'}}>Star Notes</p>
-							:importantData
-						}
+					firstTabName="All Notes"
+					secondTabName="Important Notes"
+					firstChild={data.length===0
+						?<p style={{margin:"auto"}}>Add Notes</p>
+						:<AnimatePresence>{data}</AnimatePresence>
+					}
+					secondChild={importantData===0
+						?<p style={{margin:'auto'}}>Star Notes</p>
+						:importantData
+					}
 					/>
-				
+				}
 			</div>
-			}
+			{/* } */}
 			{/* <ScratchPad/> */}
 		</div>
 	)

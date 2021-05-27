@@ -8,6 +8,7 @@
 	align-items: center;
 	background: #373c40;
 	transition: .4s;
+	box-shadow: 3px 0 5px 0 black;
 }
 
 /* add glassmorphism */
