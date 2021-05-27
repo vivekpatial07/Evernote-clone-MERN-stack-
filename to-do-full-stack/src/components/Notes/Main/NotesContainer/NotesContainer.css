@@ -1,17 +1,14 @@
 .notes-container{
-	height: 500px;
-	/* box-shadow: 2px 2px 2px 2px #ccc; */
-	width: 1200px;
+	max-height: 500px;
+	min-height: 500px;
 	display: flex;
 	overflow-x: auto;
 	border-radius: 7px;
-	/* z-index: 100; */
 	margin:10px;
 	position:relative;
-	top: 100px;
-	background: #373c40;
-	/* background: rgb(90,180,251);
-	background: linear-gradient(169deg, rgba(90,180,251,1) 0%, rgba(50,127,242,1) 100%);     */
+	background-image: url(../Assets/bg.jpg);
+	background-size: cover;
+	box-shadow: 10px 0px 4px 1px #2c2f31;
 }
 
 .notes-container::-webkit-scrollbar { 
@@ -30,17 +27,17 @@
 	border-bottom-left-radius: 8px;
 	min-width: 300px;
 	transition: transform .2s;
-	background: rgba( 255, 255, 255, 0.45 );
-	/* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
+	background: rgba( 255, 255, 255, 0.2 );
 	backdrop-filter: blur( 4px );
 	-webkit-backdrop-filter: blur( 4px );
 	border-radius: 10px;
-	border: 1px solid rgba( 255, 255, 255, 0.18 );
+	border: 1px solid rgba( 255, 255, 255, 0.2 );
 }
 
 .single-note:hover{
-	transform: scale(1.1); 
 	cursor: pointer !important;
+	background: linear-gradient(49deg, rgba(246,164,113,0.1) 0%, rgba(255,94,0,1) 100%);
+
 }
 
 .container-right{
@@ -86,7 +83,7 @@
 
 .container-right .ui.segment>.ui.dimmer {
 	background: #373c40;
-	width: 1200px;
+	width: 100%;
 }
 
 .container-right .ui.inverted.dimmer .ui.loader:after {

@@ -24,7 +24,7 @@ function Main(props) {
 					? (
 					<ReactLoader /> 
 					)	:	(
-					<div style={{display:"flex", flexDirection:'row',height:"100vh"}}>
+					<div style={{display:"flex", flexDirection:'row',height:"94vh"}}>
 						<div style={{display:"flex"}}>
 							<SideNav/>
 						</div>

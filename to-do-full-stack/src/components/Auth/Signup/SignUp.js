@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
-import { signUpInitiate } from '../../redux/actionCreator'
+import { signUpInitiate } from '../../../redux/actionCreator'
+import './Signup.css'
 
 const SignUp = ({ history }) => {
   
@@ -19,12 +20,14 @@ const SignUp = ({ history }) => {
   }
 
   return (
-    <div>
+    <div className="signUpContainer">
       <form onSubmit={submitHandler}>
+        <div className="wrapper">
         {/* <input placeholder="username"/> */}
         <input placeholder="email" onChange={changeHandler} name="email"/>
         <input placeholder="password" type="password" onChange={changeHandler} name="password"/>
         <button type="submit">SignUp</button>
+        </div>
       </form>
     </div>
   )

@@ -1,6 +1,6 @@
 import AddTodo from './components/Todo/AddTodo/AddTodo'
 import Login from './components/Login/Login'
-import SignUp from './components/Auth/SignUp'
+import SignUp from './components/Auth/Signup/SignUp'
 import './App.css'
 import Main from './components/Notes/Main/Main'
 import Nav from './components/Nav/Nav'

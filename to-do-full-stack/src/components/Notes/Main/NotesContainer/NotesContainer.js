@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import './NotesContainer.css'
 import {useDispatch, useSelector} from 'react-redux'
 import { AnimatePresence } from "framer-motion";
-// import ScratchPad from '../../ScratchPad/ScratchPad';
+import ScratchPad from '../../ScratchPad/ScratchPad';
 import { withRouter } from 'react-router';
 // import { removeHTMLTags } from '../../helpers/helpers';
 import ReactQuill from 'react-quill';
@@ -98,7 +98,13 @@ function NotesContainer({notes, history}) {
 				}
 			</div>
 			{/* } */}
-			{/* <ScratchPad/> */}
+			<div style={{display: "flex"}}>
+				<ScratchPad/>
+				<ScratchPad/>
+				<ScratchPad/>
+				<ScratchPad/>
+			</div>
+			
 		</div>
 	)
 }
