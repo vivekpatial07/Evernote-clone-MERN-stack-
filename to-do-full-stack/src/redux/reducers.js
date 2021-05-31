@@ -83,7 +83,7 @@ const noteReducer = (state = initialNoteState , action ) => {
 
 
 const initialAuthState = {
-    userInfo:null,
+    userInfo: null,
     loading: false
 }
 
@@ -98,10 +98,16 @@ const authReducer = (state=initialAuthState, action) => {
 		case actionTypes.SIGN_UP_SUCCESS:
 			return {
 				...state,
-				userInfo:action.payload,
-				loading:false
+				userInfo: action.payload,
+				loading: false
 			}
 
+		case actionTypes.LOGIN_SUCCESS:
+			return {
+				...state,
+				userInfo: action.payload,
+				loading: false
+			}
 		default:
 			return state
 	}

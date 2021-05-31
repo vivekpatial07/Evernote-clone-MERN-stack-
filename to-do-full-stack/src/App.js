@@ -15,14 +15,12 @@ function App() {
   return (
     <div className="App">
         <Switch>
+          <Route path='/login' component={Login} />
           <Route path="/signup" component={SignUp}/>
           <Route path='/todo'>  
             <AddTodo/>  
           </Route>
           <ProtectedRoute path='/task' component={Main}/>
-          <Route path='/login'>
-            <Login/>
-          </Route>
           <Redirect from="/" to="/task" />
         </Switch>
 

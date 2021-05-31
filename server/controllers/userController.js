@@ -2,6 +2,7 @@ const User =  require('../models/userModel/userModel')
 const generateToken  = require('../utils/tokenGenerator')
 const bcrypt = require('bcryptjs')
 const { validationResult } = require('express-validator')
+const jwt = require('jsonwebtoken')
 
 
 const login = async (req, res) => {
@@ -18,12 +19,15 @@ const login = async (req, res) => {
     let user = await User.findOne({
       email
     });
+    
+    console.log(user)
     if (!user)
       return res.status(400).json({
         message: "User Not Found"
       });
 
     const isMatch = await bcrypt.compare(password, user.password);
+    console.log(isMatch)
     if (!isMatch)
       return res.status(400).json({
         message: "Incorrect Password !"

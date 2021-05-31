@@ -2,6 +2,7 @@ import { put } from "@redux-saga/core/effects"
 import axios from "axios"
 import {
   signUpSuccess,
+  loginSuccess,
   logoutSuccess
 } from "./actionCreator"
 
@@ -18,13 +19,31 @@ export function* signUpSaga(data){
   try {
     yield put(signUpSuccess(userCreds))
     yield data.redirectTo.push('/task')
-  } catch {
-    alert('login failed')
+  } catch(error) {
+    alert('sign up failed', error)
   }
 }
 
+export function* loginSaga(data) {
+  
+  const userCreds = yield data.payload
 
-export function* logoutSaga(data){
+  yield axios.post('http://localhost:7777/login', userCreds).then((res) => {
+    console.log(res.data)
+    localStorage.setItem('userInfo',JSON.stringify(res.data))
+  }).catch(err => {
+    console.log(err)
+  })
+
+  try {
+    yield put(loginSuccess(userCreds))
+    yield data.redirectTo.push('/task')
+  } catch (error) {
+    console.log('login failed', error)
+  }
+}
+
+export function* logoutSaga(data) {
   
   yield localStorage.removeItem("userInfo")
   

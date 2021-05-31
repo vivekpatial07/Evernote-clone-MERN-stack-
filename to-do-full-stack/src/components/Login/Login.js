@@ -1,5 +1,7 @@
 import React,{useEffect, useState}from 'react'
 import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { loginInitiate } from '../../redux/actionCreator'
 import { withRouter } from 'react-router-dom'
 import './Login.css'
 import Icon1 from '../Icons/Icon1'
@@ -8,6 +10,7 @@ const Login = (props) => {
 	
 	const [data,setdata] = useState()
 	const [isLogged,setisLogged] = useState(false)
+	const dispatch = useDispatch()
 
 	const changeHandler = (e) => {
 		const datum = {...data}
@@ -17,20 +20,22 @@ const Login = (props) => {
 
 	const loginHandler = async(e) =>{
 		e.preventDefault()
-		console.log(data)
-		const res =  await axios.post('http://localhost:7777/login',data)
-		console.log(res)
-		if(res.status===200){
-			setisLogged(true)
-		}
+		dispatch(loginInitiate(data, props.history))
+
+
+		// const res =  await axios.post('http://localhost:7777/login',data)
+		// console.log(res)
+		// if(res.status===200){
+			// setisLogged(true)
+		// }
 			
 	}
-
-	useEffect(()=>{
-		if(isLogged){
-			props.history.push('todo')
-		}
-	},[isLogged, props.history])
+// use local storage for this redirect
+	// useEffect(()=>{
+	// 	if(isLogged){
+	// 		props.history.push('todo')
+	// 	}
+	// },[isLogged, props.history])
 
 	return (
 		<div className="loginWrapper">
