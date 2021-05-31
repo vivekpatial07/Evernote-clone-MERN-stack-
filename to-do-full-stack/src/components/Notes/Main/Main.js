@@ -3,7 +3,7 @@ import SideNav from '../SideNav/SideNav'
 import './Main.css'
 import {useSelector,useDispatch} from 'react-redux'
 import { authSelector, noteSelector } from '../../../redux/selector'
-import axios from 'axios'
+import Nav from '../../Nav/Nav'
 import NotesContainer from './NotesContainer/NotesContainer'
 import AddNoteModal from '../AddNoteModal/AddNoteModal'
 // import { showModal } from '../../../redux/actionCreator'
@@ -19,6 +19,7 @@ function Main(props) {
    
 	return (
 		<div>
+			<Nav />
 			{
 				auth.loading
 					? (

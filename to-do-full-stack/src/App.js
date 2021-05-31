@@ -14,7 +14,6 @@ function App() {
 
   return (
     <div className="App">
-        <Nav />
         <Switch>
           <Route path="/signup" component={SignUp}/>
           <Route path='/todo'>  

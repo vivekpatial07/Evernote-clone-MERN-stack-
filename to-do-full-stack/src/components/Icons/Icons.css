@@ -1,0 +1,4 @@
+.iconOne svg:not(:root) {
+ height: 100px; 
+ margin-top: 10px;
+}

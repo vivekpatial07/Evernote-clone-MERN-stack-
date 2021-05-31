@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import { signUpInitiate } from '../../../redux/actionCreator'
 import './Signup.css'
-
+import Icon1 from '../../Icons/Icon1'
 const SignUp = ({ history }) => {
   
   const [data, setData] = useState({})
@@ -20,16 +20,23 @@ const SignUp = ({ history }) => {
   }
 
   return (
-    <div className="signUpContainer">
-      <form onSubmit={submitHandler}>
-        <div className="wrapper">
-        {/* <input placeholder="username"/> */}
-        <input placeholder="email" onChange={changeHandler} name="email"/>
-        <input placeholder="password" type="password" onChange={changeHandler} name="password"/>
-        <button type="submit">SignUp</button>
+    <>
+      <div className="signUpContainer">
+        <Icon1 />
+        <p className="formHeader">NeverNote</p>
+        <form onSubmit={submitHandler}>
+          <div className="wrapper">
+          {/* <input placeholder="username"/> */}
+          <input placeholder="email" onChange={changeHandler} name="email"/>
+          <input placeholder="password" type="password" onChange={changeHandler} name="password"/>
+          <button type="submit">SignUp</button>
+          </div>
+        </form>
+        <div>
+          <button>Log In</button>
         </div>
-      </form>
-    </div>
+      </div>
+    </>
   )
 }
 
