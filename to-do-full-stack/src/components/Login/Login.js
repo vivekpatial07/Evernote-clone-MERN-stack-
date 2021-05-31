@@ -1,6 +1,8 @@
 import React,{useEffect, useState}from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import './Login.css'
+import Icon1 from '../Icons/Icon1'
 
 const Login = (props) => {
 	
@@ -31,13 +33,20 @@ const Login = (props) => {
 	},[isLogged, props.history])
 
 	return (
-		<div>
-			<h1>Login</h1>
+		<div className="loginWrapper">
+			<Icon1 />
+			<p className="formHeader">NeverNote</p>
 			<form style={{display:'flex',flexDirection:'column'}}>
 				<input onChange={changeHandler} name="email" placeholder="email"/>
 				<input onChange={changeHandler} name="password" placeholder="password"/>
-				<button onClick={loginHandler}>LOGIN</button>
+				<button className="formBtn" onClick={loginHandler}>LOGIN</button>
 			</form>
+			<div className="formFooter">
+				<p>
+					Don't Have an account ?
+				</p>
+				<button onClick={() => props.history.push('/signup')}>Sign Up</button>
+			</div>
 		</div>
 	)
 }

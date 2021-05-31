@@ -27,14 +27,18 @@ const SignUp = ({ history }) => {
         <form onSubmit={submitHandler}>
           <div className="wrapper">
           {/* <input placeholder="username"/> */}
+          <input placeholder="username" onChange={changeHandler} name="username"/>
           <input placeholder="email" onChange={changeHandler} name="email"/>
           <input placeholder="password" type="password" onChange={changeHandler} name="password"/>
-          <button type="submit">SignUp</button>
+          <button type="submit">SIGN UP</button>
           </div>
         </form>
-        <div>
-          <button>Log In</button>
-        </div>
+        <div className="signupFooter">
+				<p>
+					Already Have an account ?
+				</p>
+				<button onClick={() => history.push('/login')}>Login In</button>
+			</div>
       </div>
     </>
   )

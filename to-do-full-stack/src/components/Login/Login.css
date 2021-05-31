@@ -1,4 +1,4 @@
-.signUpContainer {
+.loginWrapper {
   height: 100vh;
   width: 500px;
   margin: auto;
@@ -6,18 +6,22 @@
   border-right: 1px solid lightgrey;
   border-left: 1px solid lightgrey;
   box-shadow: 0px 1px 4px 2px grey;
-  /* background-image: url('../../Notes/Main/Assets/bg.jpg'); */
-}
-
-.wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin: 34px auto;
 }
 
-.wrapper input{
+.formBtn {
+  height: 50px;
+  width: 300px;
+	background-color: rgba(213,108,47,1);
+  border: none;
+  border-radius: 10px 10px;
+  margin: 10px 0;
+}
+
+
+.loginWrapper input{
   margin: 10px auto;
   height: 50px;
   width: 300px;
@@ -27,7 +31,7 @@
   padding: 0 10px;
 }
 
-.wrapper input:focus{
+.loginWrapper input:focus{
   outline: none;
   caret-color: rgba(213,108,47,1);
 }
@@ -37,49 +41,21 @@
 	font-family: 'Dancing Script', cursive;
 }
 
-.wrapper button {
-  height: 50px;
-  width: 300px;
-	background-color: rgba(213,108,47,1);
-  border: none;
-  border-radius: 10px 10px;
-  margin: 10px 0;
-}
-
-.wrapper button:focus {
+.formBtn:focus {
   outline: none;
   background: rgb(236, 140, 84);
 }
 
 
-.wrapper button:hover {
+.formBtn:hover {
   outline: none;
   background: rgb(236, 140, 84);
   cursor: pointer;
 }
 
-::-webkit-input-placeholder {
-  text-align: center;
-  color: gray;
-  font-size: small;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-  text-align: center;  
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-  text-align: center;  
-}
-
-:-ms-input-placeholder {  
-  text-align: center; 
-}
-
-
-.signupFooter {
+.formFooter {
   color: white;
-  margin: auto ;
+  margin-top: 34px;
   font-size: medium;
   background: #373c40;
   width: 300px;
@@ -92,7 +68,7 @@
   bottom: 0 !important;
 }
 
-.signupFooter button {
+.formFooter button {
 	background-color: rgba(213,108,47,1);
   width: 100px;
   height: 30px;
@@ -100,13 +76,13 @@
   border: none;
 }
 
-.signupFooter button:hover {
+.formFooter button:hover {
   outline: none;
   background: rgb(236, 140, 84);
   cursor: pointer;
 }
 
-.signupFooter:focus {
+.formFooter:focus {
   outline: none;
   background: rgb(236, 140, 84);
 }
