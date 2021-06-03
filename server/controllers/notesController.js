@@ -44,14 +44,23 @@ const addNote = (req,res)=>{
     } else{
           //dont use new use edit method which is commented
           const note = new Note({
-              mainNote: req.body.mainNote||"PLEASE WRITE SOMETHING`",
+              mainNote: req.body.mainNote,
               title: req.body.title||'title', //validation to be added if something is emplty show toaster or just save with common text like this
               _id: req.body._id,
               user: req.user
 
           })
+          // note.save()
+          Note.findByIdAndUpdate(req.body._id, note).then(data => {
+            console.log(data)
+          }).catch(error => {
+            console.log(error)
+          })
+
+          // console.log(note)
+          console.log(req.body.mainNote || 'opsdfak')
           console.log('hii2')
-          const user = User.findById(req.user)
+          //const user = User.findById(req.user)
         //     user.notes.push(note)
         //   user.save().then(()=>{
         //     console.log('user saved')
@@ -61,7 +70,7 @@ const addNote = (req,res)=>{
         //   Note.findByIdAndUpdate(req.body._id, note,(err,data)=>{
         //       res.status(200).json('Edited Sucessfully')
         //   })
-      }
+    }
   })
 }
 
