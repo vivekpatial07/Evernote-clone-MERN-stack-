@@ -19,10 +19,13 @@ function NotesContainer({notes, history}) {
 	const noteClicked = (e,id) =>{
 		history.push(`task/${id}/edit`)
 	}
-
+	const userInfo = JSON.parse(localStorage.getItem('userInfo'))
+	
 	useEffect(()=>{
-			dispatch(fetchNotes())
-			dispatch(fetchImportantNotes())
+		if(userInfo.user){
+			dispatch(fetchNotes(userInfo.user._id))
+			dispatch(fetchImportantNotes(userInfo.user._id))
+		}
 	},[])
 	
 	const data = state.notes.map(note=>{

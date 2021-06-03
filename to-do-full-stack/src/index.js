@@ -7,6 +7,7 @@ import 'semantic-ui-css/semantic.min.css'
 import {Provider} from "react-redux";
 import {BrowserRouter} from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css'; // ES6
+import '../node_modules/font-awesome/css/font-awesome.min.css'; 
 
 
 import store from './redux/store'

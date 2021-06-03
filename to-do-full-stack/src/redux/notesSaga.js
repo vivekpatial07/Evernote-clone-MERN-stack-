@@ -7,9 +7,13 @@ import {
 import axios from 'axios'
 
 
-export function* fetchNotesSaga() {
-	
-	const data = yield axios.get('http://localhost:7777/task').then((res)=>{
+export function* fetchNotesSaga(id) {
+	const data = yield axios.get('http://localhost:7777/task',{
+		params: {
+			id: id.payload
+		}
+	}).then((res)=>{
+		console.log(res,'this is the prini')
 		return res
 	})
 

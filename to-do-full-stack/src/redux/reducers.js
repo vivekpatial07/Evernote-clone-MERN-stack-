@@ -101,6 +101,12 @@ const authReducer = (state=initialAuthState, action) => {
 				userInfo: action.payload,
 				loading: false
 			}
+			
+		case actionTypes.LOGIN_INITIATE:
+			return {
+				...state,
+				loading: true
+			}
 
 		case actionTypes.LOGIN_SUCCESS:
 			return {

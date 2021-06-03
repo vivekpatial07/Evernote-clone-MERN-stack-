@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { signUpInitiate } from '../../../redux/actionCreator'
+import { authSelector } from '../../../redux/selector'
 import './Signup.css'
 import Icon1 from '../../Icons/Icon1'
 const SignUp = ({ history }) => {
   
   const [data, setData] = useState({})
   const dispatch = useDispatch()
+	const { loading } = useSelector(authSelector)
   
   const submitHandler = (e) => {
     e.preventDefault()
@@ -30,7 +32,9 @@ const SignUp = ({ history }) => {
           <input placeholder="username" onChange={changeHandler} name="username"/>
           <input placeholder="email" onChange={changeHandler} name="email"/>
           <input placeholder="password" type="password" onChange={changeHandler} name="password"/>
-          <button type="submit">SIGN UP</button>
+          <button type="submit">
+					  { !loading ? "SIGN UP" : <div className="fa fa-spinner fa-spin"></div>}
+          </button>
           </div>
         </form>
         <div className="signupFooter">

@@ -49,7 +49,7 @@ export function* logoutSaga(data) {
   
   try {
     yield put(logoutSuccess())
-    yield data.redirectTo.push('/signup')
+    yield data.redirectTo.push('/login')
     yield console.log('ppus')
   } catch (error) {
     console.log('erero', error)    

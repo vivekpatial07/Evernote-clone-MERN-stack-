@@ -80,9 +80,18 @@ const getSingleNote = (req,res)=>{
 }
 
 const getAllNotes = (req,res)=>{
-  Note.find()
-  .then((notes)=> res.json(notes))
-  .catch(err=> res.status(400).json("Error"+err))
+ const id = req.url.split('=')[1]
+ if(id){
+  User.findById(id).then(usr => {
+    const noteIds = usr.notes  
+    Note.find({
+      '_id' : { $in: noteIds
+      }
+      }).then(allNotes => {
+        res.json(allNotes)
+      })     
+    })
+  }
 }
 
 
