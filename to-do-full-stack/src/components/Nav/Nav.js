@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom'
 import './Nav.css'
 
 function Nav(props) {
-
+  const userInfo = JSON.parse(localStorage.getItem('userInfo'))
   const dispatch = useDispatch()
   const history = useHistory()
     
@@ -46,6 +46,7 @@ function Nav(props) {
             }}
           /> */}
         <Menu.Menu position="right">
+          <p className="username">Hi {userInfo.username || userInfo.user.username}</p>
           <Dropdown item icon='dropdown'>
             <Dropdown.Menu>
               <Dropdown.Item onClick={()=>{alert('profile clicked')}}>

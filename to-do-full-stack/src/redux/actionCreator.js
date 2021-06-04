@@ -22,6 +22,7 @@ export const storeNotes = (data) => {
 }
 
 export const fetchNotes = (id) => {
+	console.log(id,'id is this')
 	return {
 		type:actionTypes.FETCH_NOTES,
 		payload: id

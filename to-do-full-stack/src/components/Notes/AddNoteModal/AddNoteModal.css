@@ -4,7 +4,7 @@
 }
 
 .notes-modal .ql-editor{
-	min-height: 700px ;
+	min-height: 77vh ;
 	overflow: auto;
 	width: 900px;
 	/* padding: 27px auto !important; */
@@ -19,7 +19,6 @@
 }
 
 .header-input{
-	border-color: #ffeb82;
 	height: 61px;
 	font-size: 40px;
 	vertical-align: middle;
@@ -38,8 +37,10 @@
 
 .header-input::placeholder{
 	font-weight: 100;
+	font-size: larger;
 	color: #D3D3D3;
 	vertical-align: middle;
+	text-align: start;
 }
 
 .top-bar{

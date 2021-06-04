@@ -15,11 +15,14 @@ export function* fetchNotesSaga(id) {
 	}).then((res)=>{
 		console.log(res,'this is the prini')
 		return res
+	}).catch(err => {
+		console.log(err,'this is the error')
 	})
 
 	try {
 		yield put(fetchNoteSuccess(data.data))
 	} catch {
+			alert('hiii error')
 			console.log('error')
 	}
 }

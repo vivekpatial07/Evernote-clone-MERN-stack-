@@ -31,7 +31,7 @@ const protect = async(req, res, next) => {
       
       const decoded = jwt.verify(token, "randomString")
       console.log(decoded)
-      req.user = await User.findById(decoded.id).select('-password')
+      req.user = await User.findById(decoded.id||decoded.user.id).select('-password')
 
       next()
 

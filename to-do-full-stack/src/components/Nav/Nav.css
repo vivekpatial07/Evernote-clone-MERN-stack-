@@ -30,3 +30,9 @@ div .ui.active.visible.item.dropdown {
 .ui.secondary.menu .item {
   color: white !important;
 }
+.username {
+  color: white;
+  line-height: 40px;
+  vertical-align: middle;
+  margin: 0
+}

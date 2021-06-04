@@ -88,7 +88,10 @@ const getAllNotes = (req,res)=>{
       '_id' : { $in: noteIds
       }
       }).then(allNotes => {
+        console.log(allNotes)
         res.json(allNotes)
+      }).catch(err => {
+        console.log(err)
       })     
     })
   }

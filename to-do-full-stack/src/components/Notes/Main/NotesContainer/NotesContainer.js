@@ -22,9 +22,9 @@ function NotesContainer({notes, history}) {
 	const userInfo = JSON.parse(localStorage.getItem('userInfo'))
 	
 	useEffect(()=>{
-		if(userInfo.user){
-			dispatch(fetchNotes(userInfo.user._id))
-			dispatch(fetchImportantNotes(userInfo.user._id))
+		if(userInfo){
+			dispatch(fetchNotes(userInfo._id || userInfo.user._id))
+			// dispatch(fetchImportantNotes(userInfo._id))
 		}
 	},[])
 	
